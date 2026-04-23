@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Results from '@/components/Results';
@@ -7,7 +8,7 @@ import { BudgetData, ArchetypeId } from '@/types';
 import { trackResultsView } from '@/lib/analytics';
 import { ARCHETYPES } from '@/lib/constants';
 
-export default function ResultPage() {
+function ResultPageContent() {
   const searchParams = useSearchParams();
   const category = searchParams.get('category') as ArchetypeId;
   const budget = searchParams.get('budget');
@@ -129,5 +130,24 @@ export default function ResultPage() {
         <Results data={data} archetype={archetype} />
       </main>
     </div>
+  );
+}
+
+function ResultPageLoading() {
+  return (
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="text-center">
+        <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+        <p className="mt-4 text-gray-600">Loading your platform map...</p>
+      </div>
+    </div>
+  );
+}
+
+export default function ResultPage() {
+  return (
+    <Suspense fallback={<ResultPageLoading />}>
+      <ResultPageContent />
+    </Suspense>
   );
 }
