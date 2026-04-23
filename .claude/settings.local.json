@@ -20,7 +20,9 @@
       "Bash(git init *)",
       "Bash(git config *)",
       "Bash(git add *)",
-      "Bash(git commit -m 'Initial commit: MarketMap MVP with form, results, PDF generation, and analytics *)"
+      "Bash(git commit -m 'Initial commit: MarketMap MVP with form, results, PDF generation, and analytics *)",
+      "Bash(gh --version)",
+      "mcp__Windows-MCP__PowerShell"
     ]
   }
 }
