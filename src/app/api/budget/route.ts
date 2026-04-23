@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { successResponse, errorResponse, validateCategory, validateBudget } from '@/lib/api-helpers';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,8 +24,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Load data
-    const dataResponse = await fetch(new URL('../../public/data.json', import.meta.url));
-    const data = await dataResponse.json();
+    const dataPath = join(process.cwd(), 'public', 'data.json');
+    const data = JSON.parse(readFileSync(dataPath, 'utf-8'));
 
     // Find archetype
     const archetype = data.archetypes.find((a: any) => a.id === category);
