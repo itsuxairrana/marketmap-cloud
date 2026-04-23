@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://marketmap.cloud/sitemap.xml
+
+# Allow all crawlers to index the site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

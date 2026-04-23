@@ -1,0 +1,426 @@
+{
+  "archetypes": [
+    {
+      "id": "b2b_saas",
+      "name": "B2B SaaS",
+      "subtitle": "Seed-stage, $0-1M ARR",
+      "description": "Solo-to-4-person founding team, 6-24 months post-launch. VPs/Directors selling to 10-1,000 person companies. Monthly budget: $5-50K (median $10-20K).",
+      "typical_budget_min": 5000,
+      "typical_budget_max": 50000,
+      "typical_budget_median": 15000,
+      "icp": {
+        "primary": "VP/Director/Head of Sales, Marketing, RevOps, CS, Eng, Product at 10-1,000 person companies",
+        "secondary": "LinkedIn operator-creators (Emily Kramer), Substack writers (Lenny), podcasters (Jason Lemkin)"
+      },
+      "acv_range": "$1,200-$25,000",
+      "core_challenges": [
+        "Saturated paid channels with rising CPCs",
+        "20-50% SEO traffic loss from Google AI Overviews",
+        "Broken attribution via dark funnels",
+        "AI content commoditization"
+      ],
+      "hero_channels": [
+        {
+          "rank": 1,
+          "platform": "LinkedIn Organic (founder-led)",
+          "category": "organic",
+          "audience": "1B+ professionals",
+          "typical_cac": "$0 marginal",
+          "conversion_rate": "0.5-3% click-to-site",
+          "example_companies": ["Clay", "Default", "Attio", "Lovable", "Gamma"],
+          "why_it_works": "Direct relationship with decision makers, no algorithmic decay",
+          "effort_level": "High (daily content)",
+          "time_to_first_lead": "2-4 weeks",
+          "data_source": "SocialInsider 2024-26"
+        },
+        {
+          "rank": 2,
+          "platform": "Twitter/X (founder-led)",
+          "category": "organic",
+          "audience": "600M MAU, dense tech/builder network",
+          "typical_cac": "$0 marginal",
+          "conversion_rate": "Viral hits = 1000s signups",
+          "example_companies": ["Cal.com", "Lovable", "Bland AI", "Linear", "Shadcn"],
+          "why_it_works": "Reach founders + VCs directly, high intent audience",
+          "effort_level": "Medium (3-4 tweets/week)",
+          "time_to_first_lead": "1-2 weeks",
+          "data_source": "Lenny's Podcast, Elena Verna case"
+        },
+        {
+          "rank": 3,
+          "platform": "Cold Outbound (Clay + Apollo + Instantly)",
+          "category": "cold_outreach",
+          "audience": "Your entire TAM with verified emails",
+          "typical_cac": "$200-$600",
+          "conversion_rate": "Timeline-hook replies 10.01% vs problem-hook 4.39%",
+          "example_companies": ["Default (dogfooded)", "Clay (dogfooded)", "HockeyStack"],
+          "why_it_works": "Highest intent, personalized, measurable",
+          "effort_level": "Medium-High (setup + daily)",
+          "time_to_first_lead": "1 week",
+          "data_source": "Hunter.io 11M email study, Digital Bloom 2025"
+        }
+      ],
+      "paid_channels": [
+        {
+          "rank": 1,
+          "platform": "LinkedIn Ads",
+          "category": "paid_ads",
+          "typical_cac": "$400-$1,200",
+          "conversion_rate": "LeadGen form CVR 13%, LP 2.35%, CTR 0.44-0.65%",
+          "budget_recommendation": "Use after organic traction proven",
+          "data_source": "HockeyStack 2025 ($28M spend dataset)"
+        },
+        {
+          "rank": 2,
+          "platform": "Google Ads",
+          "category": "paid_ads",
+          "typical_cac": "$200-$600",
+          "conversion_rate": "1.4-2.8% B2B; 5% optimized SaaS",
+          "budget_recommendation": "20-30% of paid budget",
+          "data_source": "WordStream 2024, FirstPage Sage"
+        },
+        {
+          "rank": 3,
+          "platform": "Reddit Ads",
+          "category": "paid_ads",
+          "typical_cac": "$50-$200 signup",
+          "conversion_rate": "1-5% click-to-trial",
+          "budget_recommendation": "Test in niche subreddits",
+          "data_source": "AdBacklog 2025, Stackmatix"
+        }
+      ],
+      "hidden_goldmines": [
+        {
+          "platform": "RevGenius (Slack)",
+          "category": "community",
+          "audience_size": "35,000 GTM members",
+          "cost_model": "Sponsorships $9K/qtr - $100K/yr",
+          "typical_cac": "$30-$150 per qualified lead",
+          "example_companies": ["Gong", "Dock", "Workato", "Clearbit"],
+          "why_hidden": "Most founders don't know paid Slack sponsorships exist",
+          "why_goldmine": "Highly qualified, low competition, predictable CAC"
+        },
+        {
+          "platform": "Pavilion",
+          "category": "community",
+          "audience_size": "10,000+ paid members (GTM leaders)",
+          "cost_model": "$1,375-$2,700/yr personal; sponsorships $20-$100K",
+          "example_companies": ["HubSpot", "Gong", "Lattice"],
+          "why_hidden": "Small, curated community, gated access",
+          "why_goldmine": "Super-qualified buyers, high willingness to pay"
+        },
+        {
+          "platform": "Lenny's Newsletter + Slack",
+          "category": "newsletter",
+          "audience_size": "800K+ free / 30K paid / 30K Slack",
+          "cost_model": "Sponsorships est. $15-40K per slot",
+          "example_companies": ["Attio", "Gamma", "Clay", "Lovable"],
+          "why_hidden": "Sponsorship slots rarely discussed publicly",
+          "why_goldmine": "Engaged audience, high authority, fast conversion"
+        },
+        {
+          "platform": "Product Hunt",
+          "category": "platform",
+          "audience_size": "3.1M monthly visits",
+          "cost_model": "Free or $3-15K managed launch",
+          "conversion_rate": "2.5% signup CVR",
+          "why_hidden": "Oversaturated on surface, but launch mechanics are unknown",
+          "why_goldmine": "1-2 day spike can yield 1-10K signups if planned right"
+        },
+        {
+          "platform": "MKT1 (Emily Kramer newsletter)",
+          "category": "newsletter",
+          "audience_size": "75,000 subscribers",
+          "cost_model": "Est. $10-20K sponsorship",
+          "why_goldmine": "Most focused B2B GTM audience online"
+        }
+      ],
+      "audience_hangout_locations": {
+        "subreddits": [
+          {"name": "r/SaaS", "members": "400K", "engagement": "High"},
+          {"name": "r/startups", "members": "1.5M", "engagement": "Medium-High"},
+          {"name": "r/sales", "members": "500K", "engagement": "High"},
+          {"name": "r/marketing", "members": "1.8M", "engagement": "Medium"},
+          {"name": "r/CustomerSuccess", "members": "20K", "engagement": "Very High"},
+          {"name": "r/ProductManagement", "members": "350K", "engagement": "High"}
+        ],
+        "slack_communities": [
+          {"name": "RevGenius", "members": "35K", "vibe": "GTM focused"},
+          {"name": "Pavilion", "members": "10K+", "vibe": "Elite GTM leaders"},
+          {"name": "Modern Sales Pros", "members": "18K-27K", "vibe": "Sales focused"}
+        ],
+        "podcasts": [
+          "My First Million",
+          "SaaStr",
+          "Lenny's Podcast",
+          "Acquired",
+          "GTMnow",
+          "20VC"
+        ],
+        "newsletters": [
+          "Lenny's Newsletter",
+          "MKT1 (Emily Kramer)",
+          "Mostly Metrics (CJ Gustafson)",
+          "Demand Curve"
+        ]
+      },
+      "budget_allocation_recommended": {
+        "hero_channel_percent": 50,
+        "support_channels_percent": 30,
+        "experiments_goldmines_percent": 20
+      }
+    },
+
+    {
+      "id": "dtc_ecommerce",
+      "name": "DTC E-commerce",
+      "subtitle": "$0-1M ARR",
+      "description": "1-3 person team, 3-18 months post-launch, product-led or content-led. Audience: Direct consumers. Monthly budget: $5-50K (median $10-30K).",
+      "typical_budget_min": 5000,
+      "typical_budget_max": 50000,
+      "typical_budget_median": 20000,
+      "icp": {
+        "primary": "Direct consumers (B2C), ages 18-45, high intent on social media",
+        "secondary": "Influencers, micro-content creators, community managers"
+      },
+      "hero_channels": [
+        {
+          "rank": 1,
+          "platform": "Meta Ads (Facebook/Instagram)",
+          "category": "paid_ads",
+          "typical_cac": "$25-$80",
+          "conversion_rate": "2-5% add-to-cart, 0.5-1.5% purchase",
+          "example_companies": ["Graza", "Olipop", "Glossier", "Everlane"],
+          "why_it_works": "Pixel data, audience targeting, mobile-first",
+          "effort_level": "High (daily optimization)",
+          "data_source": "WordStream 2024, Firebrand DTC"
+        },
+        {
+          "rank": 2,
+          "platform": "TikTok Ads",
+          "category": "paid_ads",
+          "typical_cac": "$15-$50",
+          "conversion_rate": "Higher CTR (2-8%) but lower conversion (0.3-1%)",
+          "example_companies": ["Jones Road", "ILIA Beauty", "Skims"],
+          "why_it_works": "Youngest, fastest-growing demographic, viral potential",
+          "effort_level": "Very High (daily creative testing)",
+          "data_source": "Shopify data, DTC blogs"
+        },
+        {
+          "rank": 3,
+          "platform": "Google Shopping + Search",
+          "category": "paid_ads",
+          "typical_cac": "$35-$100",
+          "conversion_rate": "Higher (3-8%) but higher CPC",
+          "example_companies": ["Allbirds", "Warby Parker", "Dollar Shave Club"],
+          "why_it_works": "High-intent searchers, buying signals clear",
+          "effort_level": "Medium (feed optimization)"
+        }
+      ],
+      "hidden_goldmines": [
+        {
+          "platform": "TikTok Shop Affiliate",
+          "category": "platform",
+          "audience_size": "1B+ TikTok users",
+          "cost_model": "Commission-based (5-20%)",
+          "typical_cac": "$0 (no upfront spend)",
+          "why_hidden": "New program (2024), not widely known",
+          "why_goldmine": "Creators drive sales on your behalf, risk-free"
+        },
+        {
+          "platform": "YouTube Shorts + Affiliate",
+          "category": "platform",
+          "cost_model": "Creator revenue share",
+          "why_goldmine": "Creators naturally promote product, huge reach"
+        },
+        {
+          "platform": "Substack + Email",
+          "category": "organic",
+          "typical_cac": "$5-$20",
+          "why_hidden": "Underutilized vs social",
+          "why_goldmine": "Owned audience, highest LTV, no platform risk"
+        }
+      ],
+      "audience_hangout_locations": {
+        "platforms": ["TikTok", "Instagram Reels", "Pinterest", "YouTube Shorts"],
+        "communities": ["r/FashionReps", "r/Skincare", "r/EarlyStages"],
+        "newsletters": ["The Refresh (Substack)", "Trend Reports"]
+      }
+    },
+
+    {
+      "id": "indie_hackers",
+      "name": "Indie Hackers",
+      "subtitle": "Solo founder, $0-100K ARR",
+      "description": "Solo or 1-2 person micro-SaaS/tool builders. Monthly budget: $0-$2K (mostly organic). Audience: developers, builders, makers.",
+      "typical_budget_min": 0,
+      "typical_budget_max": 2000,
+      "typical_budget_median": 500,
+      "icp": {
+        "primary": "Developers, indie makers, solopreneurs, builders",
+        "secondary": "Technical founders, no-code creators"
+      },
+      "hero_channels": [
+        {
+          "rank": 1,
+          "platform": "Twitter/X (build in public)",
+          "category": "organic",
+          "typical_cac": "$0",
+          "conversion_rate": "50-500 signups per viral tweet",
+          "example_companies": ["Cal.com", "Lovable", "Bland AI"],
+          "why_it_works": "Founder audience, direct engagement, free",
+          "effort_level": "Medium (daily tweets)"
+        },
+        {
+          "rank": 2,
+          "platform": "Product Hunt",
+          "category": "platform",
+          "typical_cac": "$0 (free launch)",
+          "conversion_rate": "2-8% of traffic",
+          "example_companies": ["Tana", "Digits", "Intryc"],
+          "why_it_works": "Indie maker community, 1-day mega spike"
+        },
+        {
+          "rank": 3,
+          "platform": "Hacker News",
+          "category": "platform",
+          "typical_cac": "$0",
+          "conversion_rate": "Variable (lottery-like), but 100-1000 quality signups when hit",
+          "why_it_works": "Highly technical, high-intent audience"
+        }
+      ],
+      "hidden_goldmines": [
+        {
+          "platform": "Indie Hackers community",
+          "category": "community",
+          "audience_size": "500K+ makers",
+          "why_goldmine": "Target audience built-in, low competition vs Twitter"
+        },
+        {
+          "platform": "GitHub trending",
+          "category": "organic",
+          "typical_cac": "$0",
+          "why_goldmine": "Developers check daily, high intent"
+        },
+        {
+          "platform": "Dev.to articles",
+          "category": "content",
+          "typical_cac": "$0",
+          "why_goldmine": "Developer audience, permanent SEO"
+        },
+        {
+          "platform": "Email newsletter to audience",
+          "category": "owned",
+          "why_goldmine": "Highest LTV source, repeat users"
+        }
+      ]
+    },
+
+    {
+      "id": "agency_service",
+      "name": "Agency/Service Business",
+      "subtitle": "$0-5M ARR",
+      "description": "Marketing, design, dev, or specialist agency. Team: 1-20 people. Monthly budget: $2K-$30K. Audience: SMB owners, marketing directors.",
+      "typical_budget_min": 2000,
+      "typical_budget_max": 30000,
+      "typical_budget_median": 10000,
+      "icp": {
+        "primary": "SMB ($1M-$50M) and mid-market (10-200 person) companies; marketing directors, VPs, CEOs",
+        "secondary": "Agencies themselves (for white-label)"
+      },
+      "hero_channels": [
+        {
+          "rank": 1,
+          "platform": "LinkedIn founder personal brand + DMs",
+          "category": "organic",
+          "typical_cac": "$0-500/client (20-30% inbound close)",
+          "example_companies": ["Omniscient Digital (Alex Birkett)", "Pavilion", "Barrel"],
+          "why_it_works": "B2B decision makers actively search LinkedIn, DMs are goldmine"
+        },
+        {
+          "rank": 2,
+          "platform": "Upwork (agency bidding)",
+          "category": "marketplace",
+          "audience_size": "18M+ clients posting",
+          "typical_cac": "$150-$400/client",
+          "conversion_rate": "15-35% reply; 25% close",
+          "why_hidden": "Stigmatized but 5-10x lower CAC vs LinkedIn Ads",
+          "why_goldmine": "Perfect for under $30K/mo agencies"
+        },
+        {
+          "rank": 3,
+          "platform": "Clutch.co",
+          "category": "marketplace_directory",
+          "audience_size": "8M monthly visitors",
+          "cost_model": "Free; Verified $500/yr; Sponsored $2K+/mo",
+          "why_goldmine": "2-8x ROI when ranked top-15 in category"
+        }
+      ],
+      "hidden_goldmines": [
+        {
+          "platform": "Webflow Certified Partners",
+          "category": "partner_directory",
+          "audience_size": "100K+ Webflow sites",
+          "example_companies": ["Finsweet", "Flow Ninja", "BRIX Agency"],
+          "why_hidden": "Less saturated than HubSpot/Shopify",
+          "why_goldmine": "BRIX grew from 5→22 team from directory"
+        },
+        {
+          "platform": "HubSpot Solutions Directory",
+          "category": "partner_directory",
+          "audience_size": "250K+ HubSpot customers",
+          "why_goldmine": "High-intent business buyers"
+        },
+        {
+          "platform": "Podcast guesting",
+          "category": "content_outreach",
+          "typical_cac": "$500-$3000 blended",
+          "why_hidden": "Most focus on hosting not guesting",
+          "why_goldmine": "30-40% faster sales cycles, 50%+ interview→opportunity"
+        },
+        {
+          "platform": "Hampton",
+          "category": "community",
+          "audience_size": "1000+ members ($3M+ rev required)",
+          "why_goldmine": "No-solicit, high-trust referrals"
+        }
+      ]
+    }
+  ],
+
+  "budget_allocation_formula": {
+    "hero_channel": 50,
+    "support_channels": 30,
+    "experiments_goldmines": 20,
+    "description": "Allocate 50% of budget to hero channel (the ONE thing that will work), 30% to 2-3 support channels, 20% to experiments and hidden goldmines"
+  },
+
+  "cross_archetype_patterns": [
+    {
+      "pattern": "No $0→$1M company scaled on paid ads alone",
+      "insight": "All case studies had a dominant organic 'hero channel' (founder content, community, or cold outreach) FIRST, then paid ads as amplification"
+    },
+    {
+      "pattern": "Hidden platforms share signature",
+      "insight": "Gated access, technical effort, or patience required - this filters out casual competitors"
+    },
+    {
+      "pattern": "Dark funnel dominates attribution",
+      "insight": "Buyers research in Slack/Reddit/podcasts/Lenny's, THEN search brand on Google. Last-click attribution penalizes real drivers"
+    },
+    {
+      "pattern": "Cold outbound is a platform",
+      "insight": "Elite teams (Clay, Default) hit $200-600 CAC vs FirstPage Sage ABM benchmark of $4,664"
+    }
+  ],
+
+  "data_caveats": {
+    "note": "All numeric ranges are decision-support estimates, not binding forecasts. Validate against first 30-day CAC data before scaling.",
+    "gaps": [
+      "Meta Ads B2B CAC: ranges extrapolated from WordStream sub-industry averages",
+      "Sponsorship rates (Lenny's, MKT1, GTMnow): industry-standard estimates, not public",
+      "Channel mix for specific companies: based on founder interview synthesis, not internal dashboards",
+      "Platform CACs vary ±30-50% by niche and execution quality"
+    ]
+  }
+}
