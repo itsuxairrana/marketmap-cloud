@@ -22,7 +22,11 @@
       "Bash(git add *)",
       "Bash(git commit -m 'Initial commit: MarketMap MVP with form, results, PDF generation, and analytics *)",
       "Bash(gh --version)",
-      "mcp__Windows-MCP__PowerShell"
+      "mcp__Windows-MCP__PowerShell",
+      "Bash(winget install *)",
+      "Bash(gh auth *)",
+      "Bash(cat)",
+      "Read(//tmp/**)"
     ]
   }
 }
