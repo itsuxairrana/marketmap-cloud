@@ -31,3 +31,11 @@ export const validateForm = (category: string, budget: string): FormErrors => {
 export const hasErrors = (errors: FormErrors): boolean => {
   return Object.keys(errors).length > 0;
 };
+
+export const validateBudget = (budget: number): boolean => {
+  return budget >= 1000 && budget <= 1000000;
+};
+
+export const validateCategory = (category: string): boolean => {
+  return !!category && category.trim().length > 0;
+};

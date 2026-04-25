@@ -1,0 +1,1464 @@
+{
+  "taxonomy_version": "1.0",
+  "total_business_types": 1200,
+  "structure": "Category → Subcategory → Micro-Category → Variants (Online, Physical, B2B)",
+  "last_updated": "2026-04-24",
+  "note": "Each business type will be mapped to: Hero Channel, Support Channels, Hidden Goldmines, CAC Data, Audience Locations",
+  
+  "categories": [
+    {
+      "id": "apparel_fashion",
+      "name": "Apparel & Fashion",
+      "description": "Clothing, footwear, accessories",
+      "subcategories": [
+        {
+          "id": "clothing",
+          "name": "Clothing & Textiles",
+          "microcategories": [
+            {
+              "id": "womens_clothing",
+              "name": "Women's Clothing",
+              "variants": [
+                {"type": "online", "name": "Women's Clothing Store (Online)"},
+                {"type": "physical", "name": "Women's Boutique (Brick & Mortar)"},
+                {"type": "b2b", "name": "Women's Clothing Wholesaler"}
+              ]
+            },
+            {
+              "id": "mens_clothing",
+              "name": "Men's Clothing",
+              "variants": [
+                {"type": "online", "name": "Men's Clothing Store (Online)"},
+                {"type": "physical", "name": "Men's Boutique (Brick & Mortar)"},
+                {"type": "b2b", "name": "Men's Clothing Wholesaler"}
+              ]
+            },
+            {
+              "id": "childrens_clothing",
+              "name": "Children's Clothing",
+              "variants": [
+                {"type": "online", "name": "Kids Clothing Store (Online)"},
+                {"type": "physical", "name": "Kids Boutique (Brick & Mortar)"},
+                {"type": "b2b", "name": "Children's Clothing Wholesaler"}
+              ]
+            },
+            {
+              "id": "fast_fashion",
+              "name": "Fast Fashion",
+              "variants": [
+                {"type": "online", "name": "Fast Fashion E-commerce"},
+                {"type": "physical", "name": "Fast Fashion Retail Chain"},
+                {"type": "b2b", "name": "Fast Fashion Supplier"}
+              ]
+            },
+            {
+              "id": "luxury_fashion",
+              "name": "Luxury Fashion",
+              "variants": [
+                {"type": "online", "name": "Luxury Fashion Store (Online)"},
+                {"type": "physical", "name": "Luxury Fashion Boutique"},
+                {"type": "b2b", "name": "Luxury Fashion Distributor"}
+              ]
+            },
+            {
+              "id": "streetwear",
+              "name": "Streetwear & Urban",
+              "variants": [
+                {"type": "online", "name": "Streetwear Brand (Online)"},
+                {"type": "physical", "name": "Streetwear Shop"},
+                {"type": "b2b", "name": "Streetwear Wholesaler"}
+              ]
+            },
+            {
+              "id": "activewear",
+              "name": "Activewear & Athleisure",
+              "variants": [
+                {"type": "online", "name": "Activewear Brand (Online)"},
+                {"type": "physical", "name": "Activewear Store"},
+                {"type": "b2b", "name": "Activewear Supplier"}
+              ]
+            },
+            {
+              "id": "sustainable_fashion",
+              "name": "Sustainable & Eco Fashion",
+              "variants": [
+                {"type": "online", "name": "Eco-Fashion Brand (Online)"},
+                {"type": "physical", "name": "Sustainable Fashion Boutique"},
+                {"type": "b2b", "name": "Eco-Fashion Distributor"}
+              ]
+            },
+            {
+              "id": "plus_size",
+              "name": "Plus Size Fashion",
+              "variants": [
+                {"type": "online", "name": "Plus Size Store (Online)"},
+                {"type": "physical", "name": "Plus Size Boutique"},
+                {"type": "b2b", "name": "Plus Size Wholesaler"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "footwear",
+          "name": "Footwear & Shoes",
+          "microcategories": [
+            {
+              "id": "shoe_store",
+              "name": "General Shoe Store",
+              "variants": [
+                {"type": "online", "name": "Shoe Store (Online)"},
+                {"type": "physical", "name": "Shoe Shop (Physical)"},
+                {"type": "b2b", "name": "Shoe Wholesaler"}
+              ]
+            },
+            {
+              "id": "athletic_shoes",
+              "name": "Athletic & Sports Shoes",
+              "variants": [
+                {"type": "online", "name": "Athletic Shoes Store (Online)"},
+                {"type": "physical", "name": "Sports Shoe Store"},
+                {"type": "b2b", "name": "Athletic Shoes Supplier"}
+              ]
+            },
+            {
+              "id": "luxury_shoes",
+              "name": "Luxury & Designer Shoes",
+              "variants": [
+                {"type": "online", "name": "Luxury Shoe Store (Online)"},
+                {"type": "physical", "name": "Designer Shoe Boutique"},
+                {"type": "b2b", "name": "Luxury Shoe Distributor"}
+              ]
+            },
+            {
+              "id": "sneaker_culture",
+              "name": "Sneaker & Hype Culture",
+              "variants": [
+                {"type": "online", "name": "Sneaker Store (Online/Resale)"},
+                {"type": "physical", "name": "Sneaker Shop"},
+                {"type": "b2b", "name": "Sneaker Distributor"}
+              ]
+            },
+            {
+              "id": "casual_shoes",
+              "name": "Casual Shoes",
+              "variants": [
+                {"type": "online", "name": "Casual Shoes Store (Online)"},
+                {"type": "physical", "name": "Casual Shoe Retailer"},
+                {"type": "b2b", "name": "Casual Shoes Wholesaler"}
+              ]
+            },
+            {
+              "id": "work_safety_shoes",
+              "name": "Work & Safety Shoes",
+              "variants": [
+                {"type": "online", "name": "Safety Shoes Store (Online)"},
+                {"type": "physical", "name": "Work Shoe Retailer"},
+                {"type": "b2b", "name": "Safety Shoes Supplier"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "accessories",
+          "name": "Accessories",
+          "microcategories": [
+            {
+              "id": "jewelry",
+              "name": "Jewelry",
+              "variants": [
+                {"type": "online", "name": "Jewelry Store (Online)"},
+                {"type": "physical", "name": "Jewelry Shop"},
+                {"type": "b2b", "name": "Jewelry Wholesaler"}
+              ]
+            },
+            {
+              "id": "fine_jewelry",
+              "name": "Fine & Luxury Jewelry",
+              "variants": [
+                {"type": "online", "name": "Fine Jewelry Store (Online)"},
+                {"type": "physical", "name": "Fine Jewelry Boutique"},
+                {"type": "b2b", "name": "Fine Jewelry Distributor"}
+              ]
+            },
+            {
+              "id": "handbags",
+              "name": "Handbags & Purses",
+              "variants": [
+                {"type": "online", "name": "Handbag Store (Online)"},
+                {"type": "physical", "name": "Handbag Shop"},
+                {"type": "b2b", "name": "Handbag Wholesaler"}
+              ]
+            },
+            {
+              "id": "luxury_bags",
+              "name": "Designer Handbags",
+              "variants": [
+                {"type": "online", "name": "Designer Bag Store (Online/Resale)"},
+                {"type": "physical", "name": "Designer Bag Boutique"},
+                {"type": "b2b", "name": "Designer Bag Distributor"}
+              ]
+            },
+            {
+              "id": "watches",
+              "name": "Watches",
+              "variants": [
+                {"type": "online", "name": "Watch Store (Online)"},
+                {"type": "physical", "name": "Watch Shop"},
+                {"type": "b2b", "name": "Watch Wholesaler"}
+              ]
+            },
+            {
+              "id": "luxury_watches",
+              "name": "Luxury & Designer Watches",
+              "variants": [
+                {"type": "online", "name": "Luxury Watch Store (Online)"},
+                {"type": "physical", "name": "Designer Watch Boutique"},
+                {"type": "b2b", "name": "Luxury Watch Distributor"}
+              ]
+            },
+            {
+              "id": "belts_scarves",
+              "name": "Belts & Scarves",
+              "variants": [
+                {"type": "online", "name": "Belt & Scarf Store (Online)"},
+                {"type": "physical", "name": "Accessories Boutique"},
+                {"type": "b2b", "name": "Belt & Scarf Wholesaler"}
+              ]
+            },
+            {
+              "id": "hats_caps",
+              "name": "Hats & Caps",
+              "variants": [
+                {"type": "online", "name": "Hat Store (Online)"},
+                {"type": "physical", "name": "Hat Shop"},
+                {"type": "b2b", "name": "Hat Wholesaler"}
+              ]
+            },
+            {
+              "id": "sunglasses",
+              "name": "Sunglasses & Eyewear",
+              "variants": [
+                {"type": "online", "name": "Sunglasses Store (Online)"},
+                {"type": "physical", "name": "Eyewear Shop"},
+                {"type": "b2b", "name": "Sunglasses Wholesaler"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "beauty_cosmetics",
+      "name": "Beauty & Cosmetics",
+      "description": "Makeup, skincare, haircare, personal care",
+      "subcategories": [
+        {
+          "id": "cosmetics_makeup",
+          "name": "Cosmetics & Makeup",
+          "microcategories": [
+            {
+              "id": "makeup_brand",
+              "name": "Makeup Brand",
+              "variants": [
+                {"type": "online", "name": "Makeup Brand (Direct-to-Consumer)"},
+                {"type": "physical", "name": "Makeup Store (Physical)"},
+                {"type": "b2b", "name": "Makeup Brand Distributor"}
+              ]
+            },
+            {
+              "id": "natural_makeup",
+              "name": "Natural & Clean Makeup",
+              "variants": [
+                {"type": "online", "name": "Natural Makeup Brand (Online)"},
+                {"type": "physical", "name": "Clean Beauty Shop"},
+                {"type": "b2b", "name": "Natural Makeup Distributor"}
+              ]
+            },
+            {
+              "id": "luxury_makeup",
+              "name": "Luxury Makeup",
+              "variants": [
+                {"type": "online", "name": "Luxury Makeup Brand (Online)"},
+                {"type": "physical", "name": "Luxury Makeup Boutique"},
+                {"type": "b2b", "name": "Luxury Makeup Distributor"}
+              ]
+            },
+            {
+              "id": "subscription_makeup",
+              "name": "Makeup Subscription Box",
+              "variants": [
+                {"type": "online", "name": "Beauty Subscription Service"},
+                {"type": "b2b", "name": "Makeup Subscription Affiliate"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "skincare",
+          "name": "Skincare",
+          "microcategories": [
+            {
+              "id": "skincare_brand",
+              "name": "Skincare Brand",
+              "variants": [
+                {"type": "online", "name": "Skincare Brand (DTC)"},
+                {"type": "physical", "name": "Skincare Shop"},
+                {"type": "b2b", "name": "Skincare Distributor"}
+              ]
+            },
+            {
+              "id": "natural_skincare",
+              "name": "Natural & Organic Skincare",
+              "variants": [
+                {"type": "online", "name": "Natural Skincare Brand (Online)"},
+                {"type": "physical", "name": "Organic Skincare Shop"},
+                {"type": "b2b", "name": "Natural Skincare Distributor"}
+              ]
+            },
+            {
+              "id": "anti_aging",
+              "name": "Anti-Aging Skincare",
+              "variants": [
+                {"type": "online", "name": "Anti-Aging Brand (Online)"},
+                {"type": "physical", "name": "Anti-Aging Clinic/Shop"},
+                {"type": "b2b", "name": "Anti-Aging Distributor"}
+              ]
+            },
+            {
+              "id": "acne_solutions",
+              "name": "Acne & Problem Skin",
+              "variants": [
+                {"type": "online", "name": "Acne Solutions Brand (Online)"},
+                {"type": "physical", "name": "Acne Treatment Shop"},
+                {"type": "b2b", "name": "Acne Solutions Distributor"}
+              ]
+            },
+            {
+              "id": "sensitive_skin",
+              "name": "Sensitive Skin Care",
+              "variants": [
+                {"type": "online", "name": "Sensitive Skin Brand (Online)"},
+                {"type": "physical", "name": "Sensitive Skin Shop"},
+                {"type": "b2b", "name": "Sensitive Skin Distributor"}
+              ]
+            },
+            {
+              "id": "luxury_skincare",
+              "name": "Luxury Skincare",
+              "variants": [
+                {"type": "online", "name": "Luxury Skincare Brand (Online)"},
+                {"type": "physical", "name": "Luxury Skincare Boutique"},
+                {"type": "b2b", "name": "Luxury Skincare Distributor"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "haircare",
+          "name": "Haircare & Hair Products",
+          "microcategories": [
+            {
+              "id": "haircare_brand",
+              "name": "Haircare Brand",
+              "variants": [
+                {"type": "online", "name": "Hair Care Brand (Online)"},
+                {"type": "physical", "name": "Hair Product Shop"},
+                {"type": "b2b", "name": "Haircare Distributor"}
+              ]
+            },
+            {
+              "id": "natural_hair",
+              "name": "Natural Hair Care",
+              "variants": [
+                {"type": "online", "name": "Natural Hair Brand (Online)"},
+                {"type": "physical", "name": "Natural Hair Shop"},
+                {"type": "b2b", "name": "Natural Hair Distributor"}
+              ]
+            },
+            {
+              "id": "hair_loss",
+              "name": "Hair Loss & Growth",
+              "variants": [
+                {"type": "online", "name": "Hair Loss Solution Brand (Online)"},
+                {"type": "physical", "name": "Hair Loss Clinic"},
+                {"type": "b2b", "name": "Hair Loss Product Distributor"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "personal_care",
+          "name": "Personal Care & Hygiene",
+          "microcategories": [
+            {
+              "id": "skincare_tools",
+              "name": "Skincare Tools & Devices",
+              "variants": [
+                {"type": "online", "name": "Skincare Tools Store (Online)"},
+                {"type": "physical", "name": "Beauty Device Shop"},
+                {"type": "b2b", "name": "Skincare Tools Distributor"}
+              ]
+            },
+            {
+              "id": "soap_bath",
+              "name": "Soap & Bath Products",
+              "variants": [
+                {"type": "online", "name": "Soap & Bath Brand (Online)"},
+                {"type": "physical", "name": "Bath Product Shop"},
+                {"type": "b2b", "name": "Soap & Bath Wholesaler"}
+              ]
+            },
+            {
+              "id": "fragrance",
+              "name": "Fragrance & Perfume",
+              "variants": [
+                {"type": "online", "name": "Perfume Store (Online)"},
+                {"type": "physical", "name": "Fragrance Shop"},
+                {"type": "b2b", "name": "Perfume Distributor"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "food_beverage",
+      "name": "Food & Beverage",
+      "description": "Restaurants, cafes, food delivery, specialty foods",
+      "subcategories": [
+        {
+          "id": "restaurants",
+          "name": "Restaurants & Dining",
+          "microcategories": [
+            {
+              "id": "fine_dining",
+              "name": "Fine Dining Restaurant",
+              "variants": [
+                {"type": "physical", "name": "Fine Dining Restaurant"},
+                {"type": "online", "name": "Fine Dining Delivery Service"}
+              ]
+            },
+            {
+              "id": "casual_dining",
+              "name": "Casual Dining",
+              "variants": [
+                {"type": "physical", "name": "Casual Restaurant"},
+                {"type": "online", "name": "Casual Restaurant + Delivery"}
+              ]
+            },
+            {
+              "id": "fast_casual",
+              "name": "Fast Casual",
+              "variants": [
+                {"type": "physical", "name": "Fast Casual Restaurant"},
+                {"type": "online", "name": "Fast Casual + Delivery"}
+              ]
+            },
+            {
+              "id": "quick_service",
+              "name": "Quick Service Restaurant",
+              "variants": [
+                {"type": "physical", "name": "QSR (Fast Food)"},
+                {"type": "online", "name": "QSR + Delivery"}
+              ]
+            },
+            {
+              "id": "ethnic_cuisine",
+              "name": "Ethnic Cuisine",
+              "variants": [
+                {"type": "physical", "name": "Ethnic Restaurant"},
+                {"type": "online", "name": "Ethnic Cuisine Delivery"}
+              ]
+            },
+            {
+              "id": "vegan_vegetarian",
+              "name": "Vegan & Vegetarian",
+              "variants": [
+                {"type": "physical", "name": "Vegan Restaurant"},
+                {"type": "online", "name": "Vegan Delivery Service"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cafes_bakery",
+          "name": "Cafes & Bakeries",
+          "microcategories": [
+            {
+              "id": "coffee_shop",
+              "name": "Coffee Shop",
+              "variants": [
+                {"type": "physical", "name": "Coffee Shop"},
+                {"type": "online", "name": "Coffee Shop + Online Ordering"}
+              ]
+            },
+            {
+              "id": "cafe",
+              "name": "Cafe",
+              "variants": [
+                {"type": "physical", "name": "Cafe/Bistro"},
+                {"type": "online", "name": "Cafe + Delivery"}
+              ]
+            },
+            {
+              "id": "bakery",
+              "name": "Bakery",
+              "variants": [
+                {"type": "physical", "name": "Bakery Shop"},
+                {"type": "online", "name": "Bakery + Online Delivery"}
+              ]
+            },
+            {
+              "id": "artisan_bakery",
+              "name": "Artisan/Specialty Bakery",
+              "variants": [
+                {"type": "physical", "name": "Artisan Bakery"},
+                {"type": "online", "name": "Specialty Bakery Online"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "food_delivery",
+          "name": "Food Delivery & Ghost Kitchens",
+          "microcategories": [
+            {
+              "id": "ghost_kitchen",
+              "name": "Ghost Kitchen / Cloud Kitchen",
+              "variants": [
+                {"type": "online", "name": "Ghost Kitchen (Delivery Only)"}
+              ]
+            },
+            {
+              "id": "meal_kit",
+              "name": "Meal Kit Service",
+              "variants": [
+                {"type": "online", "name": "Meal Kit Subscription"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "specialty_food",
+          "name": "Specialty & Artisan Foods",
+          "microcategories": [
+            {
+              "id": "organic_food",
+              "name": "Organic Foods",
+              "variants": [
+                {"type": "online", "name": "Organic Food Store (Online)"},
+                {"type": "physical", "name": "Organic Food Shop"},
+                {"type": "b2b", "name": "Organic Food Distributor"}
+              ]
+            },
+            {
+              "id": "local_farm",
+              "name": "Local Farm & Farm-to-Table",
+              "variants": [
+                {"type": "online", "name": "Farm Box Delivery"},
+                {"type": "physical", "name": "Farm Stand"}
+              ]
+            },
+            {
+              "id": "gourmet_foods",
+              "name": "Gourmet & Artisan Foods",
+              "variants": [
+                {"type": "online", "name": "Gourmet Food Store (Online)"},
+                {"type": "physical", "name": "Gourmet Food Shop"},
+                {"type": "b2b", "name": "Gourmet Distributor"}
+              ]
+            },
+            {
+              "id": "international_foods",
+              "name": "International & Imported Foods",
+              "variants": [
+                {"type": "online", "name": "International Food Store (Online)"},
+                {"type": "physical", "name": "International Market"},
+                {"type": "b2b", "name": "Import Distributor"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "retail",
+      "name": "Retail & Consumer Goods",
+      "description": "General retail, consumer electronics, home goods",
+      "subcategories": [
+        {
+          "id": "electronics",
+          "name": "Electronics & Technology",
+          "microcategories": [
+            {
+              "id": "electronics_store",
+              "name": "General Electronics Store",
+              "variants": [
+                {"type": "online", "name": "Electronics Store (Online)"},
+                {"type": "physical", "name": "Electronics Retail Shop"},
+                {"type": "b2b", "name": "Electronics Distributor"}
+              ]
+            },
+            {
+              "id": "phone_mobile",
+              "name": "Mobile Phones",
+              "variants": [
+                {"type": "online", "name": "Phone Store (Online)"},
+                {"type": "physical", "name": "Mobile Phone Shop"},
+                {"type": "b2b", "name": "Phone Distributor"}
+              ]
+            },
+            {
+              "id": "computers",
+              "name": "Computers & Laptops",
+              "variants": [
+                {"type": "online", "name": "Computer Store (Online)"},
+                {"type": "physical", "name": "Computer Shop"},
+                {"type": "b2b", "name": "Computer Distributor"}
+              ]
+            },
+            {
+              "id": "gaming",
+              "name": "Gaming & Esports",
+              "variants": [
+                {"type": "online", "name": "Gaming Store (Online)"},
+                {"type": "physical", "name": "Gaming Shop"},
+                {"type": "b2b", "name": "Gaming Distributor"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "home_garden",
+          "name": "Home & Garden",
+          "microcategories": [
+            {
+              "id": "home_decor",
+              "name": "Home Decor",
+              "variants": [
+                {"type": "online", "name": "Home Decor Store (Online)"},
+                {"type": "physical", "name": "Home Decor Shop"},
+                {"type": "b2b", "name": "Home Decor Wholesaler"}
+              ]
+            },
+            {
+              "id": "furniture",
+              "name": "Furniture",
+              "variants": [
+                {"type": "online", "name": "Furniture Store (Online)"},
+                {"type": "physical", "name": "Furniture Store"},
+                {"type": "b2b", "name": "Furniture Wholesaler"}
+              ]
+            },
+            {
+              "id": "garden_outdoor",
+              "name": "Garden & Outdoor",
+              "variants": [
+                {"type": "online", "name": "Garden Store (Online)"},
+                {"type": "physical", "name": "Garden Center"},
+                {"type": "b2b", "name": "Garden Wholesaler"}
+              ]
+            },
+            {
+              "id": "kitchenware",
+              "name": "Kitchenware & Appliances",
+              "variants": [
+                {"type": "online", "name": "Kitchen Store (Online)"},
+                {"type": "physical", "name": "Kitchenware Shop"},
+                {"type": "b2b", "name": "Kitchen Distributor"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "book_media",
+          "name": "Books & Media",
+          "microcategories": [
+            {
+              "id": "bookstore",
+              "name": "Bookstore",
+              "variants": [
+                {"type": "online", "name": "Online Bookstore"},
+                {"type": "physical", "name": "Physical Bookstore"},
+                {"type": "b2b", "name": "Book Distributor"}
+              ]
+            },
+            {
+              "id": "specialty_books",
+              "name": "Specialty Books",
+              "variants": [
+                {"type": "online", "name": "Specialty Book Store (Online)"},
+                {"type": "physical", "name": "Specialty Book Shop"},
+                {"type": "b2b", "name": "Specialty Book Distributor"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "general_merchandise",
+          "name": "General Merchandise",
+          "microcategories": [
+            {
+              "id": "department_store",
+              "name": "Department Store",
+              "variants": [
+                {"type": "online", "name": "Department Store (Online)"},
+                {"type": "physical", "name": "Department Store"},
+                {"type": "b2b", "name": "Department Store Supplier"}
+              ]
+            },
+            {
+              "id": "variety_store",
+              "name": "Variety & Discount Store",
+              "variants": [
+                {"type": "online", "name": "Variety Store (Online)"},
+                {"type": "physical", "name": "Discount Variety Store"},
+                {"type": "b2b", "name": "Variety Distributor"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "health_wellness",
+      "name": "Health & Wellness",
+      "description": "Fitness, healthcare, wellness services",
+      "subcategories": [
+        {
+          "id": "fitness",
+          "name": "Fitness & Gyms",
+          "microcategories": [
+            {
+              "id": "gym",
+              "name": "Gym / Fitness Center",
+              "variants": [
+                {"type": "physical", "name": "Gym / Health Club"},
+                {"type": "online", "name": "Online Fitness Platform"}
+              ]
+            },
+            {
+              "id": "yoga_pilates",
+              "name": "Yoga & Pilates Studio",
+              "variants": [
+                {"type": "physical", "name": "Yoga Studio"},
+                {"type": "online", "name": "Online Yoga Classes"}
+              ]
+            },
+            {
+              "id": "personal_training",
+              "name": "Personal Training",
+              "variants": [
+                {"type": "physical", "name": "Personal Training Studio"},
+                {"type": "online", "name": "Online Personal Training"}
+              ]
+            },
+            {
+              "id": "crossfit",
+              "name": "CrossFit / Specialty Training",
+              "variants": [
+                {"type": "physical", "name": "CrossFit Box"},
+                {"type": "online", "name": "Online CrossFit Classes"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "wellness_spa",
+          "name": "Wellness & Spa Services",
+          "microcategories": [
+            {
+              "id": "spa",
+              "name": "Spa & Massage",
+              "variants": [
+                {"type": "physical", "name": "Spa & Massage Center"},
+                {"type": "online", "name": "Spa Booking Platform"}
+              ]
+            },
+            {
+              "id": "wellness_center",
+              "name": "Wellness Center",
+              "variants": [
+                {"type": "physical", "name": "Wellness Clinic"},
+                {"type": "online", "name": "Online Wellness Coaching"}
+              ]
+            },
+            {
+              "id": "meditation",
+              "name": "Meditation & Mindfulness",
+              "variants": [
+                {"type": "physical", "name": "Meditation Studio"},
+                {"type": "online", "name": "Online Meditation App"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "healthcare",
+          "name": "Healthcare Services",
+          "microcategories": [
+            {
+              "id": "telemedicine",
+              "name": "Telemedicine / Online Doctor",
+              "variants": [
+                {"type": "online", "name": "Telemedicine Platform"}
+              ]
+            },
+            {
+              "id": "dental",
+              "name": "Dental Practice",
+              "variants": [
+                {"type": "physical", "name": "Dental Clinic"},
+                {"type": "online", "name": "Dental Telemedicine"}
+              ]
+            },
+            {
+              "id": "mental_health",
+              "name": "Mental Health & Therapy",
+              "variants": [
+                {"type": "physical", "name": "Therapy Practice"},
+                {"type": "online", "name": "Online Therapy Platform"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nutrition",
+          "name": "Nutrition & Supplements",
+          "microcategories": [
+            {
+              "id": "supplement_store",
+              "name": "Supplement Store",
+              "variants": [
+                {"type": "online", "name": "Supplement Store (Online)"},
+                {"type": "physical", "name": "Supplement Shop"},
+                {"type": "b2b", "name": "Supplement Distributor"}
+              ]
+            },
+            {
+              "id": "nutrition_coaching",
+              "name": "Nutrition Coaching",
+              "variants": [
+                {"type": "physical", "name": "Nutrition Clinic"},
+                {"type": "online", "name": "Online Nutrition Coaching"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "services",
+      "name": "Professional Services",
+      "description": "Consulting, legal, accounting, design agencies",
+      "subcategories": [
+        {
+          "id": "consulting",
+          "name": "Consulting Services",
+          "microcategories": [
+            {
+              "id": "management_consulting",
+              "name": "Management Consulting",
+              "variants": [
+                {"type": "b2b", "name": "Management Consulting Firm"}
+              ]
+            },
+            {
+              "id": "business_consulting",
+              "name": "Business Consulting",
+              "variants": [
+                {"type": "b2b", "name": "Business Advisor"},
+                {"type": "online", "name": "Online Business Consulting"}
+              ]
+            },
+            {
+              "id": "marketing_agency",
+              "name": "Marketing & Digital Agency",
+              "variants": [
+                {"type": "b2b", "name": "Marketing Agency"},
+                {"type": "online", "name": "Digital Marketing Freelancer"}
+              ]
+            },
+            {
+              "id": "design_agency",
+              "name": "Design Agency",
+              "variants": [
+                {"type": "b2b", "name": "Design Agency"},
+                {"type": "online", "name": "Freelance Designer"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "legal_financial",
+          "name": "Legal & Financial Services",
+          "microcategories": [
+            {
+              "id": "law_firm",
+              "name": "Law Firm",
+              "variants": [
+                {"type": "b2b", "name": "Law Firm"},
+                {"type": "online", "name": "Online Legal Service"}
+              ]
+            },
+            {
+              "id": "accounting",
+              "name": "Accounting & Tax",
+              "variants": [
+                {"type": "b2b", "name": "Accounting Firm"},
+                {"type": "online", "name": "Online Tax Service"}
+              ]
+            },
+            {
+              "id": "financial_advisor",
+              "name": "Financial Advisory",
+              "variants": [
+                {"type": "b2b", "name": "Financial Advisor"},
+                {"type": "online", "name": "Robo-Advisor Platform"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "education_training",
+          "name": "Education & Training",
+          "microcategories": [
+            {
+              "id": "tutoring",
+              "name": "Tutoring",
+              "variants": [
+                {"type": "physical", "name": "Tutoring Center"},
+                {"type": "online", "name": "Online Tutoring"}
+              ]
+            },
+            {
+              "id": "online_course",
+              "name": "Online Course Platform",
+              "variants": [
+                {"type": "online", "name": "Online Course Creator"},
+                {"type": "b2b", "name": "Corporate Training"}
+              ]
+            },
+            {
+              "id": "bootcamp",
+              "name": "Bootcamp / Coding School",
+              "variants": [
+                {"type": "physical", "name": "Coding Bootcamp"},
+                {"type": "online", "name": "Online Bootcamp"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "saas_technology",
+      "name": "SaaS & Technology",
+      "description": "Software, apps, tech tools, dev services",
+      "subcategories": [
+        {
+          "id": "saas_products",
+          "name": "SaaS Products",
+          "microcategories": [
+            {
+              "id": "productivity_saas",
+              "name": "Productivity SaaS",
+              "variants": [
+                {"type": "online", "name": "Project Management Tool"},
+                {"type": "online", "name": "Productivity App"}
+              ]
+            },
+            {
+              "id": "crm_saas",
+              "name": "CRM Software",
+              "variants": [
+                {"type": "online", "name": "CRM Platform"}
+              ]
+            },
+            {
+              "id": "analytics_saas",
+              "name": "Analytics & Data SaaS",
+              "variants": [
+                {"type": "online", "name": "Analytics Platform"}
+              ]
+            },
+            {
+              "id": "marketing_saas",
+              "name": "Marketing SaaS",
+              "variants": [
+                {"type": "online", "name": "Email Marketing Tool"},
+                {"type": "online", "name": "SEO Tool"},
+                {"type": "online", "name": "Social Media Tool"}
+              ]
+            },
+            {
+              "id": "accounting_saas",
+              "name": "Accounting SaaS",
+              "variants": [
+                {"type": "online", "name": "Accounting Software"}
+              ]
+            },
+            {
+              "id": "hr_saas",
+              "name": "HR & Payroll SaaS",
+              "variants": [
+                {"type": "online", "name": "HR Management Platform"},
+                {"type": "online", "name": "Payroll Software"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dev_services",
+          "name": "Development & Tech Services",
+          "microcategories": [
+            {
+              "id": "web_development",
+              "name": "Web Development",
+              "variants": [
+                {"type": "b2b", "name": "Web Dev Agency"},
+                {"type": "online", "name": "Freelance Web Developer"}
+              ]
+            },
+            {
+              "id": "app_development",
+              "name": "App Development",
+              "variants": [
+                {"type": "b2b", "name": "App Dev Agency"},
+                {"type": "online", "name": "Freelance App Developer"}
+              ]
+            },
+            {
+              "id": "it_support",
+              "name": "IT Support & Services",
+              "variants": [
+                {"type": "b2b", "name": "IT Support Company"},
+                {"type": "online", "name": "Remote IT Support"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "travel_hospitality",
+      "name": "Travel & Hospitality",
+      "description": "Hotels, travel agencies, tourism",
+      "subcategories": [
+        {
+          "id": "accommodation",
+          "name": "Accommodation",
+          "microcategories": [
+            {
+              "id": "hotel",
+              "name": "Hotel",
+              "variants": [
+                {"type": "physical", "name": "Hotel"},
+                {"type": "online", "name": "Hotel Booking Platform"}
+              ]
+            },
+            {
+              "id": "airbnb_vacation",
+              "name": "Vacation Rental / Airbnb",
+              "variants": [
+                {"type": "online", "name": "Vacation Rental Host"},
+                {"type": "b2b", "name": "Vacation Rental Management"}
+              ]
+            },
+            {
+              "id": "hostel",
+              "name": "Hostel",
+              "variants": [
+                {"type": "physical", "name": "Hostel"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "travel_services",
+          "name": "Travel Services",
+          "microcategories": [
+            {
+              "id": "travel_agency",
+              "name": "Travel Agency",
+              "variants": [
+                {"type": "physical", "name": "Travel Agency"},
+                {"type": "online", "name": "Online Travel Agency"}
+              ]
+            },
+            {
+              "id": "tour_operator",
+              "name": "Tour Operator",
+              "variants": [
+                {"type": "b2b", "name": "Tour Company"},
+                {"type": "online", "name": "Online Tour Booking"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "automotive",
+      "name": "Automotive",
+      "description": "Car sales, repair, rental, accessories",
+      "subcategories": [
+        {
+          "id": "car_sales",
+          "name": "Car Sales",
+          "microcategories": [
+            {
+              "id": "car_dealership",
+              "name": "Car Dealership",
+              "variants": [
+                {"type": "physical", "name": "Car Dealership"},
+                {"type": "online", "name": "Online Car Sales"}
+              ]
+            },
+            {
+              "id": "used_car",
+              "name": "Used Car Dealer",
+              "variants": [
+                {"type": "physical", "name": "Used Car Lot"},
+                {"type": "online", "name": "Used Car Marketplace"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "car_services",
+          "name": "Car Services",
+          "microcategories": [
+            {
+              "id": "auto_repair",
+              "name": "Auto Repair Shop",
+              "variants": [
+                {"type": "physical", "name": "Auto Repair Shop"},
+                {"type": "online", "name": "Auto Repair Booking"}
+              ]
+            },
+            {
+              "id": "car_wash",
+              "name": "Car Wash",
+              "variants": [
+                {"type": "physical", "name": "Car Wash"},
+                {"type": "online", "name": "Car Wash Booking"}
+              ]
+            },
+            {
+              "id": "car_rental",
+              "name": "Car Rental",
+              "variants": [
+                {"type": "physical", "name": "Car Rental Agency"},
+                {"type": "online", "name": "Online Car Rental"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "real_estate",
+      "name": "Real Estate",
+      "description": "Property sales, rentals, real estate services",
+      "subcategories": [
+        {
+          "id": "property_sales",
+          "name": "Property Sales",
+          "microcategories": [
+            {
+              "id": "real_estate_agent",
+              "name": "Real Estate Agent",
+              "variants": [
+                {"type": "b2b", "name": "Real Estate Agency"},
+                {"type": "online", "name": "Online Property Portal"}
+              ]
+            },
+            {
+              "id": "residential_sales",
+              "name": "Residential Property Sales",
+              "variants": [
+                {"type": "b2b", "name": "Residential Real Estate"},
+                {"type": "online", "name": "Property Listing Site"}
+              ]
+            },
+            {
+              "id": "commercial_real_estate",
+              "name": "Commercial Real Estate",
+              "variants": [
+                {"type": "b2b", "name": "Commercial Real Estate Broker"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "property_rental",
+          "name": "Property Rental",
+          "microcategories": [
+            {
+              "id": "apartment_rental",
+              "name": "Apartment Rental",
+              "variants": [
+                {"type": "online", "name": "Apartment Rental Portal"}
+              ]
+            },
+            {
+              "id": "office_rental",
+              "name": "Office Space Rental",
+              "variants": [
+                {"type": "b2b", "name": "Office Space Broker"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "entertainment",
+      "name": "Entertainment & Media",
+      "description": "Content creators, entertainment services, media",
+      "subcategories": [
+        {
+          "id": "content_creation",
+          "name": "Content Creation",
+          "microcategories": [
+            {
+              "id": "youtube_channel",
+              "name": "YouTube Creator",
+              "variants": [
+                {"type": "online", "name": "YouTube Channel"}
+              ]
+            },
+            {
+              "id": "podcast",
+              "name": "Podcast",
+              "variants": [
+                {"type": "online", "name": "Podcast Creator"}
+              ]
+            },
+            {
+              "id": "blogger",
+              "name": "Blog / Blogging",
+              "variants": [
+                {"type": "online", "name": "Blogger / Blog Site"}
+              ]
+            },
+            {
+              "id": "twitch_streamer",
+              "name": "Twitch Streamer",
+              "variants": [
+                {"type": "online", "name": "Twitch Streamer"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "entertainment_services",
+          "name": "Entertainment Services",
+          "microcategories": [
+            {
+              "id": "event_planning",
+              "name": "Event Planning",
+              "variants": [
+                {"type": "b2b", "name": "Event Planner"},
+                {"type": "online", "name": "Online Event Booking"}
+              ]
+            },
+            {
+              "id": "photography",
+              "name": "Photography",
+              "variants": [
+                {"type": "b2b", "name": "Photography Studio"},
+                {"type": "online", "name": "Freelance Photographer"}
+              ]
+            },
+            {
+              "id": "videography",
+              "name": "Videography",
+              "variants": [
+                {"type": "b2b", "name": "Video Production"},
+                {"type": "online", "name": "Freelance Videographer"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "crafts_hobbies",
+      "name": "Crafts & Hobbies",
+      "description": "Arts, crafts, hobby supplies, DIY",
+      "subcategories": [
+        {
+          "id": "art_supplies",
+          "name": "Art & Craft Supplies",
+          "microcategories": [
+            {
+              "id": "art_store",
+              "name": "Art Supply Store",
+              "variants": [
+                {"type": "online", "name": "Art Supply Store (Online)"},
+                {"type": "physical", "name": "Art Supply Shop"},
+                {"type": "b2b", "name": "Art Supplies Wholesaler"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hobby_crafts",
+          "name": "Hobby & Craft Products",
+          "microcategories": [
+            {
+              "id": "hobby_shop",
+              "name": "Hobby Shop",
+              "variants": [
+                {"type": "online", "name": "Hobby Store (Online)"},
+                {"type": "physical", "name": "Hobby Shop"},
+                {"type": "b2b", "name": "Hobby Wholesaler"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "education",
+      "name": "Education",
+      "description": "Schools, universities, educational services",
+      "subcategories": [
+        {
+          "id": "schools",
+          "name": "Schools",
+          "microcategories": [
+            {
+              "id": "elementary_school",
+              "name": "Elementary School",
+              "variants": [
+                {"type": "physical", "name": "Elementary School"}
+              ]
+            },
+            {
+              "id": "secondary_school",
+              "name": "Secondary School",
+              "variants": [
+                {"type": "physical", "name": "High School"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "higher_education",
+          "name": "Higher Education",
+          "microcategories": [
+            {
+              "id": "university",
+              "name": "University",
+              "variants": [
+                {"type": "physical", "name": "University"}
+              ]
+            },
+            {
+              "id": "college",
+              "name": "College",
+              "variants": [
+                {"type": "physical", "name": "College"}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "research_roadmap": {
+    "phase_1": {
+      "business_types": 200,
+      "description": "Start with 200 most common business types",
+      "estimated_hours": 40,
+      "approach": "Manual research + AI assist"
+    },
+    "phase_2": {
+      "business_types": 300,
+      "description": "Expand to 500 total business types",
+      "estimated_hours": 60,
+      "approach": "Hybrid manual + AI"
+    },
+    "phase_3": {
+      "business_types": 500,
+      "description": "Complete taxonomy to 1000+ types",
+      "estimated_hours": 100,
+      "approach": "AI-heavy with spot checks"
+    }
+  },
+
+  "data_template_per_business_type": {
+    "business_id": "shoe_shop",
+    "business_name": "Shoe Shop",
+    "category": "Apparel & Fashion",
+    "subcategory": "Footwear",
+    "microcategory": "General Shoe Store",
+    "variant": "physical",
+    
+    "hero_channel": {
+      "platform": "Local SEO + Google Maps",
+      "cac": "$20-50",
+      "conversion_rate": "2-5%",
+      "why_it_works": "Local customers search for 'shoe store near me'",
+      "time_to_first_lead": "2-4 weeks",
+      "effort_level": "Medium"
+    },
+    
+    "support_channels": [
+      {
+        "platform": "Instagram",
+        "cac": "$30-80",
+        "conversion_rate": "1-3%",
+        "why_it_works": "Visual product showcase"
+      },
+      {
+        "platform": "Facebook Local Ads",
+        "cac": "$25-60",
+        "conversion_rate": "1-2%",
+        "why_it_works": "Local targeting"
+      }
+    ],
+    
+    "hidden_goldmines": [
+      {
+        "platform": "Reddit r/Sneakers",
+        "cac": "$10-30",
+        "why_hidden": "Most shoe shops don't know this community exists",
+        "why_goldmine": "Highly engaged shoe enthusiasts"
+      },
+      {
+        "platform": "Local fashion blogs",
+        "cac": "$50-150",
+        "why_hidden": "Requires relationship building",
+        "why_goldmine": "Trusted local recommendations"
+      }
+    ],
+    
+    "audience_locations": {
+      "online": ["Reddit r/Sneakers", "Instagram fashion tags", "TikTok fashion"],
+      "offline": ["Local shopping districts", "Malls", "Fashion events"]
+    },
+    
+    "budget_allocation": {
+      "hero_channel": "50%",
+      "support_channels": "30%",
+      "goldmines": "20%"
+    }
+  }
+}
