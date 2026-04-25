@@ -26,7 +26,10 @@
       "Bash(winget install *)",
       "Bash(gh auth *)",
       "Bash(cat)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "mcp__Windows-MCP__FileSystem",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }
