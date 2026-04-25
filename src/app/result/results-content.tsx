@@ -1,8 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { getBusinessData } from '@/lib/dataLoader';
-import { generatePDF, downloadPDF } from '@/utils/pdf-generator';
+import businessStrategies from '@/data/business_strategies.json';
 
 export default function ResultsContent() {
   const searchParams = useSearchParams();
@@ -19,298 +18,262 @@ export default function ResultsContent() {
 
   const businessId = searchParams.get('businessId');
   const variant = searchParams.get('variant') || 'online';
-  const budgetParam = searchParams.get('budget') || '0';
-  const budget = parseInt(budgetParam);
+  const mindset = searchParams.get('mindset') || 'founder';
+  const market = searchParams.get('market') || 'us';
 
-  const business = businessId ? getBusinessData(businessId) : null;
-  const variantKey = `${variant}_variant` as keyof typeof business;
-  const marketingData = business ? (business[variantKey] as any) : null;
+  // Get business from new data structure
+  const business = (businessStrategies as any).businesses.find(
+    (b: any) => b.id === businessId
+  );
+  const strategy = business?.variants[variant]?.mindsets[mindset];
+  const marketData = business?.market_variants[market];
 
-  if (!business || !marketingData) {
+  if (!business || !strategy || !marketData) {
     return (
       <div className="min-h-screen bg-slate-900 flex items-center justify-center">
         <div className="text-white text-center">
-          <h1 className="text-3xl font-bold mb-4">Business not found</h1>
+          <h1 className="text-3xl font-bold mb-4">Data not found</h1>
           <a href="/" className="text-blue-400 hover:text-blue-300">
-            ← Back to MarketMap
+            ← Start over
           </a>
         </div>
       </div>
     );
   }
 
-  // Calculate budget allocation
-  const heroBudget = Math.round(budget * 0.5);
-  const supportBudget = Math.round(budget * 0.3);
-  const goldmineBudget = Math.round(budget * 0.2);
+  // Get currency symbol
+  const currencySymbols: Record<string, string> = {
+    USD: '$',
+    INR: '₹',
+    EUR: '€'
+  };
+  const currency = marketData.currency;
+  const currencySymbol = currencySymbols[currency] || currency;
 
-  // ORGANIC vs PAID CLASSIFICATION
-  const classifyChannel = (platform: string): string => {
-    const organic = ['reddit', 'linkedin organic', 'twitter/x', 'facebook groups', 'communities', 'slack', 'forums'];
-    const paid = ['meta ads', 'google', 'facebook ads', 'linkedin ads', 'tiktok ads', 'instagram ads'];
-
-    const lower = platform.toLowerCase();
-    if (organic.some(o => lower.includes(o))) return 'organic';
-    if (paid.some(p => lower.includes(p))) return 'paid';
-    return 'hybrid';
+  // Calculate CAC in local currency
+  const adjustCAC = (cac_range: string | null) => {
+    if (!cac_range) return null;
+    // Parse range like "$25-50" and adjust
+    const cleaned = cac_range.replace(/[^0-9-]/g, '');
+    const [min, max] = cleaned.split('-').map(Number);
+    const adjustedMin = Math.round(min * marketData.cac_multiplier);
+    const adjustedMax = Math.round(max * marketData.cac_multiplier);
+    return `${currencySymbol}${adjustedMin}-${adjustedMax}`;
   };
 
-  const heroPlatformType = classifyChannel(marketingData.hero_channel.platform);
-  const supportsOrganic = [
-    ...marketingData.support_channels.filter((c: any) => classifyChannel(c.platform) !== 'paid'),
-    ...marketingData.hidden_goldmines.filter((g: any) => classifyChannel(g.platform) !== 'paid')
-  ];
+  const mindsetLabel: Record<string, string> = {
+    bootstrapper: '🆓 Bootstrapper Strategy',
+    founder: '💡 Growth Strategy',
+    growth: '🚀 Aggressive Growth'
+  };
 
-  const handleDownloadPDF = () => {
-    try {
-      const doc = generatePDF(business as any, marketingData as any, budget, variant as any);
-      downloadPDF(doc, business.name);
-    } catch (error) {
-      console.error('Failed to download PDF:', error);
-      alert('Failed to download PDF. Please try again.');
-    }
+  const mindsetColor: Record<string, string> = {
+    bootstrapper: 'bg-green-50 border-green-300',
+    founder: 'bg-blue-50 border-blue-300',
+    growth: 'bg-purple-50 border-purple-300'
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-8">
       <div className="max-w-4xl mx-auto">
 
-        {/* Header */}
+        {/* HEADER */}
         <div className="text-white mb-8">
           <a href="/" className="text-blue-400 hover:text-blue-300 text-sm mb-4 block">
-            ← Back to MarketMap
+            ← Change strategy
           </a>
           <h1 className="text-4xl font-bold">{business.name}</h1>
           <p className="text-slate-400">{business.category}</p>
         </div>
 
-        {/* BUDGET STATUS CARD */}
-        <div className="bg-white rounded-lg p-6 mb-6 shadow-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-2xl font-bold text-slate-900">
-                {budget === 0 ? '🆓 Free-First Strategy' : `💰 Budget: $${budget}/month`}
-              </h2>
-              <p className="text-slate-600 mt-2">
-                {budget === 0
-                  ? 'We\'re optimizing for organic channels and zero-cost tactics'
-                  : `We'll split your budget into 50% hero • 30% support • 20% goldmines`}
-              </p>
-            </div>
-            <button
-              onClick={() => window.history.back()}
-              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-semibold transition"
-            >
-              ✎ Adjust Budget
-            </button>
-          </div>
+        {/* STRATEGY BADGE */}
+        <div className={`border-2 rounded-xl p-6 mb-6 ${mindsetColor[mindset]}`}>
+          <h2 className="text-2xl font-bold text-slate-900">
+            {mindsetLabel[mindset]}
+          </h2>
+          <p className="text-slate-700 mt-2">{strategy.description}</p>
+          <p className="text-sm text-slate-600 mt-3">
+            📍 Market: {market.toUpperCase()} ({currency})
+          </p>
         </div>
 
-        {/* ORGANIC CHANNELS (Always show, especially if $0) */}
-        {(budget === 0 || supportsOrganic.length > 0) && (
-          <div className="bg-white rounded-lg p-6 mb-6 shadow-lg">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
-              🆓 Organic Channels (FREE)
-            </h2>
-            <p className="text-slate-600 mb-4">
-              These channels don't require paid budget but do require time/effort:
-            </p>
-
-            {/* ORGANIC HERO */}
-            {heroPlatformType !== 'paid' && (
-              <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-4 rounded">
-                <h3 className="font-bold text-slate-900 mb-2">
-                  ⭐ Hero Channel: {marketingData.hero_channel.platform}
-                </h3>
-                <p className="text-sm text-slate-700 mb-2">
-                  {marketingData.hero_channel.why_it_works}
-                </p>
-                <div className="text-sm space-y-1">
-                  <p><strong>Effort Level:</strong> {marketingData.hero_channel.effort_level}</p>
-                  <p><strong>Time to Results:</strong> {marketingData.hero_channel.time_to_lead}</p>
-                  {heroPlatformType === 'organic' && (
-                    <p className="text-green-700 font-bold">✅ 100% Free (requires consistent effort)</p>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* ORGANIC SUPPORT */}
-            {supportsOrganic.length > 0 && (
-              <div>
-                <p className="font-bold text-slate-900 mb-3">Additional Free Channels:</p>
-                <div className="space-y-3">
-                  {supportsOrganic.map((channel: any, idx: number) => (
-                    <div key={idx} className="bg-green-50 border border-green-200 p-3 rounded">
-                      <h4 className="font-bold text-slate-900">{channel.platform || channel.name}</h4>
-                      <p className="text-sm text-slate-600 mt-1">
-                        {channel.why_it_works || channel.why_valuable}
-                      </p>
-                      {classifyChannel(channel.platform || channel.name) === 'organic' && (
-                        <p className="text-xs text-green-700 font-bold mt-2">✅ Free (time-based)</p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-
         {/* HERO CHANNEL */}
-        <div className="bg-white rounded-lg p-6 mb-6 shadow-lg border-2 border-blue-300">
+        <div className="bg-white rounded-lg p-6 mb-6 shadow-lg border-l-4 border-blue-600">
           <h2 className="text-2xl font-bold text-slate-900 mb-4">
-            🎯 Your Hero Channel: {marketingData.hero_channel.platform}
+            🎯 Your Hero Channel
           </h2>
-          <div className="grid md:grid-cols-2 gap-4 mb-4">
-            <div>
+          <h3 className="text-xl font-bold text-blue-600 mb-3">
+            {strategy.hero_channel.primary || strategy.hero_channel.platform}
+          </h3>
+
+          <p className="text-slate-700 mb-4">{strategy.hero_channel.why}</p>
+
+          {/* METRICS */}
+          <div className="grid md:grid-cols-3 gap-4 mb-4">
+            <div className="bg-blue-50 p-4 rounded">
               <p className="text-sm text-slate-600">Customer Acquisition Cost</p>
-              <p className="text-3xl font-bold text-blue-600">{marketingData.hero_channel.cac_range}</p>
+              <p className="text-2xl font-bold text-blue-600">
+                {strategy.hero_channel.cac ? adjustCAC(strategy.hero_channel.cac) : '🆓 Free'}
+              </p>
             </div>
-            <div>
+            <div className="bg-green-50 p-4 rounded">
               <p className="text-sm text-slate-600">Conversion Rate</p>
-              <p className="text-3xl font-bold text-green-600">{marketingData.hero_channel.conversion_rate}</p>
+              <p className="text-2xl font-bold text-green-600">
+                {strategy.hero_channel.conversion}
+              </p>
             </div>
-          </div>
-          <p className="text-slate-700 mb-4">{marketingData.hero_channel.why_it_works}</p>
-          <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
-            <p className="text-sm text-slate-600">First results in: <span className="font-bold">{marketingData.hero_channel.time_to_lead}</span></p>
-            <p className="text-sm text-slate-600">Effort level: <span className="font-bold">{marketingData.hero_channel.effort_level}</span></p>
+            <div className="bg-orange-50 p-4 rounded">
+              <p className="text-sm text-slate-600">Time to First Results</p>
+              <p className="text-2xl font-bold text-orange-600">
+                {strategy.hero_channel.timeline}
+              </p>
+            </div>
           </div>
 
-          {/* Budget allocation for hero */}
-          {budget > 0 && (
-            <div className="mt-4 bg-green-50 p-4 rounded">
-              <p className="font-bold text-slate-900">📊 Budget allocation for hero channel:</p>
-              <p className="text-2xl font-bold text-green-600">${heroBudget}</p>
-            </div>
-          )}
+          {/* EFFORT LEVEL */}
+          <div className="bg-yellow-50 border border-yellow-200 p-4 rounded">
+            <p className="text-sm font-bold text-yellow-900">Effort Level: {strategy.hero_channel.effort}</p>
+          </div>
+
+          {/* ACTION STEPS */}
+          <div className="mt-4">
+            <p className="font-bold text-slate-900 mb-3">How to implement:</p>
+            <ol className="space-y-2 text-sm text-slate-700">
+              {strategy.hero_channel.action_steps.map((step: string, idx: number) => (
+                <li key={idx} className="flex gap-3">
+                  <span className="font-bold text-blue-600 flex-shrink-0">{idx + 1}.</span>
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
 
         {/* SUPPORT CHANNELS */}
-        {marketingData.support_channels && marketingData.support_channels.length > 0 && (
+        {strategy.support_channels && strategy.support_channels.length > 0 && (
           <div className="bg-white rounded-lg p-6 mb-6 shadow-lg">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">
               📱 Support Channels
-              {budget > 0 && <span className="text-sm font-normal text-slate-600"> (Strategy + ${supportBudget})</span>}
             </h2>
             <div className="space-y-4">
-              {marketingData.support_channels.map((channel: any, idx: number) => (
+              {strategy.support_channels.map((channel: any, idx: number) => (
                 <div key={idx} className="border-l-4 border-orange-500 pl-4 pb-4">
-                  <h3 className="font-bold text-slate-900">{channel.platform}</h3>
-                  <p className="text-sm text-slate-600 mb-2">{channel.why_it_works}</p>
-                  <div className="text-sm">
-                    <span className="font-bold text-orange-600">CAC: {channel.cac_range}</span>
-                    <span className="text-slate-600"> • Conv: {channel.conversion_rate}</span>
-                    {budget === 0 && classifyChannel(channel.platform) !== 'paid' && (
-                      <span className="text-green-600 ml-2">• 🆓 Free option</span>
-                    )}
+                  <h3 className="font-bold text-slate-900 text-lg">{channel.platform}</h3>
+                  <p className="text-slate-600 text-sm mb-2">{channel.why}</p>
+
+                  <div className="grid md:grid-cols-3 gap-3 text-sm mb-3">
+                    <div>
+                      <p className="text-slate-600">CAC</p>
+                      <p className="font-bold text-orange-600">
+                        {channel.cac ? adjustCAC(channel.cac) : '🆓 Free'}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-slate-600">Conversion</p>
+                      <p className="font-bold text-orange-600">{channel.conversion}</p>
+                    </div>
+                    <div>
+                      <p className="text-slate-600">Timeline</p>
+                      <p className="font-bold text-orange-600">{channel.timeline}</p>
+                    </div>
                   </div>
+
+                  {channel.budget && (
+                    <p className="text-sm bg-orange-50 p-2 rounded">
+                      💰 Budget: {currencySymbol}{Math.round(channel.budget * marketData.cac_multiplier)}/month
+                    </p>
+                  )}
+
+                  {channel.actions && (
+                    <div>
+                      <p className="text-sm font-bold text-slate-900 mb-2">Quick actions:</p>
+                      <ul className="text-xs text-slate-600 space-y-1">
+                        {channel.actions.slice(0, 3).map((action: string, i: number) => (
+                          <li key={i}>• {action}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
           </div>
         )}
 
-        {/* HIDDEN GOLDMINES */}
-        {marketingData.hidden_goldmines && marketingData.hidden_goldmines.length > 0 && (
+        {/* GOLDMINES */}
+        {strategy.hidden_goldmines && strategy.hidden_goldmines.length > 0 && (
           <div className="bg-white rounded-lg p-6 mb-6 shadow-lg">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">
               ✨ Hidden Goldmines
-              {budget > 0 && <span className="text-sm font-normal text-slate-600"> (Strategy + ${goldmineBudget})</span>}
             </h2>
             <div className="space-y-4">
-              {marketingData.hidden_goldmines.map((goldmine: any, idx: number) => (
-                <div key={idx} className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-4 rounded-lg border-l-4 border-yellow-500">
+              {strategy.hidden_goldmines.map((goldmine: any, idx: number) => (
+                <div key={idx} className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded">
                   <h3 className="font-bold text-slate-900">{goldmine.platform}</h3>
-                  <p className="text-sm text-slate-700 mt-2">
-                    <span className="font-bold">Why hidden:</span> {goldmine.why_hidden}
-                  </p>
-                  <p className="text-sm text-slate-700">
-                    <span className="font-bold">Why valuable:</span> {goldmine.why_valuable}
-                  </p>
-                  <p className="text-sm text-yellow-700 font-bold mt-2">
-                    💰 CAC: {goldmine.cac_range}
-                    {budget === 0 && classifyChannel(goldmine.platform) !== 'paid' && (
-                      <span className="text-green-600 ml-2">• 🆓 Free</span>
-                    )}
-                  </p>
+                  <p className="text-sm text-slate-700 mt-2">💡 {goldmine.why}</p>
+
+                  <div className="grid md:grid-cols-2 gap-3 text-sm my-3">
+                    <div>
+                      <p className="text-slate-600">CAC</p>
+                      <p className="font-bold text-yellow-700">
+                        {goldmine.cac ? adjustCAC(goldmine.cac) : '🆓 Free'}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-slate-600">Timeline</p>
+                      <p className="font-bold text-yellow-700">{goldmine.timeline}</p>
+                    </div>
+                  </div>
+
+                  {goldmine.actions && (
+                    <div className="text-sm text-slate-600 bg-white p-2 rounded">
+                      <p className="font-bold mb-1">How to use:</p>
+                      <ul className="space-y-1">
+                        {goldmine.actions.map((action: string, i: number) => (
+                          <li key={i}>• {action}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
           </div>
         )}
 
-        {/* BUDGET BREAKDOWN (if budget > 0) */}
-        {budget > 0 && (
+        {/* BUDGET ALLOCATION (if applicable) */}
+        {strategy.budget_allocation && (
           <div className="bg-white rounded-lg p-6 mb-6 shadow-lg">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">💰 Your ${budget}/month Budget</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+              💰 Budget Allocation
+            </h2>
+            <p className="text-slate-600 mb-4">{strategy.budget_allocation.rationale}</p>
             <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-slate-700">Hero Channel (50%)</span>
-                <span className="font-bold text-lg text-blue-600">${heroBudget}</span>
-              </div>
-              <div className="h-2 bg-blue-200 rounded-full w-full"></div>
-
-              <div className="flex justify-between items-center mt-4">
-                <span className="text-slate-700">Support Channels (30%)</span>
-                <span className="font-bold text-lg text-orange-600">${supportBudget}</span>
-              </div>
-              <div className="h-2 bg-orange-200 rounded-full w-full"></div>
-
-              <div className="flex justify-between items-center mt-4">
-                <span className="text-slate-700">Goldmines (20%)</span>
-                <span className="font-bold text-lg text-yellow-600">${goldmineBudget}</span>
-              </div>
-              <div className="h-2 bg-yellow-200 rounded-full w-full"></div>
+              {Object.entries(strategy.budget_allocation).map(([key, value]: any) => {
+                if (key === 'rationale') return null;
+                return (
+                  <div key={key} className="bg-slate-50 p-3 rounded">
+                    <p className="text-sm font-bold text-slate-900">{value}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
 
-        {/* BUDGET UPGRADE SUGGESTIONS (if no budget or low budget) */}
-        {budget < 500 && (
-          <div className="bg-blue-50 border border-blue-300 rounded-lg p-6 mb-6">
-            <h3 className="text-lg font-bold text-slate-900 mb-3">💡 Next Steps</h3>
-            {budget === 0 ? (
-              <div className="text-slate-700 space-y-2">
-                <p>✅ <strong>Month 1:</strong> Focus on organic channels (free)</p>
-                <p>→ <strong>Month 2:</strong> Once you see traction, consider $500-$1,000/month budget to accelerate</p>
-                <p>→ <strong>Month 3+:</strong> Scale to $2,000+/month if ROI is positive</p>
-                <button
-                  onClick={() => window.location.href = '/?budget=500'}
-                  className="mt-3 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold"
-                >
-                  See what $500/month looks like →
-                </button>
-              </div>
-            ) : (
-              <div className="text-slate-700 space-y-2">
-                <p>💡 Try increasing your budget to see the impact:</p>
-                <button
-                  onClick={() => window.location.href = `/?businessId=${businessId}&budget=${budget + 500}`}
-                  className="mt-3 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold"
-                >
-                  See ${budget + 500}/month plan →
-                </button>
-              </div>
-            )}
-          </div>
-        )}
+        {/* EXPECTED RESULTS */}
+        <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-300 rounded-lg p-6 mb-6">
+          <h3 className="text-lg font-bold text-slate-900 mb-3">Expected Results</h3>
+          <p className="text-slate-700 mb-2">⏱️ Timeline: {strategy.timeline}</p>
+          <p className="text-slate-700">📊 Expected: {strategy.expected_results}</p>
+        </div>
 
-        {/* Download PDF */}
-        <button
-          onClick={handleDownloadPDF}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg mb-6 transition"
-        >
-          📥 Download Full Marketing Plan (PDF)
-        </button>
-
-        {/* Back Button */}
+        {/* BACK BUTTON */}
         <a
           href="/"
           className="block text-center text-blue-400 hover:text-blue-300 font-semibold"
         >
-          ← Get plan for another business
+          ← Get plan for different business
         </a>
       </div>
     </div>

@@ -1,0 +1,701 @@
+{
+  "version": "2.0",
+  "businesses": [
+    {
+      "id": "dtc_skincare_brand",
+      "name": "DTC Skincare Brand",
+      "category": "Beauty & Cosmetics",
+      "subcategory": "Skincare",
+      "keywords": ["skincare", "beauty", "cosmetics", "face", "skincare products"],
+      "description": "Direct-to-consumer skincare e-commerce business",
+
+      "variants": {
+        "online": {
+          "mindsets": {
+            "bootstrapper": {
+              "label": "🆓 No Budget Strategy",
+              "description": "DIY approach, $0/month, 8-12 weeks to results",
+              "budget_tier": "$0",
+              "recommended_budget": "$0-200",
+
+              "hero_channel": {
+                "platform": "Organic Social Media + Niche Communities",
+                "primary": "TikTok Organic (Skincare Reviews & Routines)",
+                "why": "Skincare content is highly viral on TikTok. Zero cost, pure content. Skincare routines get millions of views.",
+                "cac": null,
+                "conversion": "0.5-2% (low but free)",
+                "timeline": "8-12 weeks to first sales",
+                "effort": "Very High - daily content needed",
+                "action_steps": [
+                  "Post 3-5 TikTok videos/week (skincare routines, product reviews, before/afters)",
+                  "Link to shop in bio",
+                  "Partner with micro-creators (free product for reviews)",
+                  "Build TikTok audience to 10K+ (6-8 months)",
+                  "Convert followers to email list"
+                ]
+              },
+
+              "support_channels": [
+                {
+                  "platform": "Reddit r/SkincareAddiction + Beauty Subreddits",
+                  "why": "500K+ engaged skincare enthusiasts asking for product recommendations",
+                  "cac": null,
+                  "conversion": "1-3% (high intent)",
+                  "timeline": "2-4 weeks",
+                  "effort": "Medium - requires authentic engagement",
+                  "actions": [
+                    "Join communities, answer skincare questions authentically",
+                    "Never hard sell - suggest products when relevant",
+                    "Share genuine tips and routines",
+                    "Host review threads monthly"
+                  ]
+                },
+                {
+                  "platform": "Pinterest Organic",
+                  "why": "Pinterest users actively searching for skincare routines. High intent, zero cost.",
+                  "cac": null,
+                  "conversion": "2-4% (very high intent)",
+                  "timeline": "4-8 weeks",
+                  "effort": "Low-Medium",
+                  "actions": [
+                    "Create 50+ pins showing skincare routines",
+                    "Link to product pages",
+                    "Use trending keywords",
+                    "Save high traffic content"
+                  ]
+                }
+              ],
+
+              "hidden_goldmines": [
+                {
+                  "platform": "Beauty Bloggers & YouTubers (100K-500K)",
+                  "why": "Influencers in niche don't charge much for reviews. High trust.",
+                  "cac": null,
+                  "conversion": "5-15%",
+                  "timeline": "2-4 weeks",
+                  "effort": "Medium",
+                  "actions": [
+                    "Find 10-20 beauty bloggers",
+                    "Send free samples with note",
+                    "Ask for honest review",
+                    "Track which creators drive sales"
+                  ]
+                },
+                {
+                  "platform": "Beauty Newsletter Collaborations",
+                  "why": "Partner with beauty newsletters. Their audience = your customer.",
+                  "cac": null,
+                  "conversion": "3-8%",
+                  "timeline": "1-2 weeks",
+                  "effort": "Low",
+                  "actions": [
+                    "Find beauty newsletters on Substack",
+                    "Pitch collaboration",
+                    "Offer reader discount",
+                    "Guest write about skincare trends"
+                  ]
+                }
+              ],
+
+              "audience_locations": {
+                "online": ["TikTok", "Instagram Reels", "Pinterest", "Reddit", "YouTube Shorts"],
+                "communities": ["Beauty Discord servers", "Skincare communities", "Facebook beauty groups"],
+                "content": ["Beauty TikTok", "Skincare Subreddits", "Beauty blogs"]
+              },
+
+              "timeline": "8-12 weeks to first meaningful sales",
+              "expected_results": "100-500 visitors/month, 10-50 sales/month",
+              "note": "Takes TIME but works. No paid budget. Requires consistent content creation."
+            },
+
+            "founder": {
+              "label": "💡 Growth Strategy",
+              "description": "Some budget ($500-2000), balanced approach, 2-4 weeks to results",
+              "budget_tier": "$500-2000",
+              "recommended_budget": "$1000",
+
+              "hero_channel": {
+                "platform": "Google Ads (Search) + Pinterest Ads",
+                "primary": "Google Ads for skincare keywords",
+                "why": "People searching 'buy skincare online' have PURCHASE intent. Fastest path to sales.",
+                "cac": "$25-50",
+                "conversion": "2-5% (very high intent)",
+                "timeline": "1-2 weeks",
+                "effort": "Medium - requires optimization",
+                "action_steps": [
+                  "Setup Google Shopping ads (show product images + prices)",
+                  "Target keywords: 'buy skincare online', 'best skincare products', 'skincare for [skin type]'",
+                  "Budget: $500/month on Google Ads",
+                  "Test different product angles",
+                  "Track ROAS - aim for 3x (spend $1, make $3)"
+                ]
+              },
+
+              "support_channels": [
+                {
+                  "platform": "Instagram Ads + Organic",
+                  "why": "Visual platform, skincare buyers are visual. Ads + organic compound.",
+                  "cac": "$30-60",
+                  "conversion": "1-3%",
+                  "timeline": "2-4 weeks",
+                  "effort": "Medium",
+                  "budget": "$300/month",
+                  "actions": [
+                    "Create carousel ads (product benefits)",
+                    "Retarget website visitors (85% cheaper)",
+                    "Post 3-4 organic reels/week",
+                    "User-generated content reviews"
+                  ]
+                },
+                {
+                  "platform": "TikTok Ads (For younger audience)",
+                  "why": "Cheapest CPM for 18-35. High engagement for skincare.",
+                  "cac": "$15-40",
+                  "conversion": "1-2%",
+                  "timeline": "2-3 weeks",
+                  "effort": "Low-Medium",
+                  "budget": "$200/month",
+                  "actions": [
+                    "Use UGC (user-generated content) ads",
+                    "Target beauty interests",
+                    "A/B test 5 different videos",
+                    "Optimize for clicks"
+                  ]
+                }
+              ],
+
+              "hidden_goldmines": [
+                {
+                  "platform": "Google Shopping Feed Optimization",
+                  "why": "Free traffic if you optimize feed correctly.",
+                  "cac": null,
+                  "conversion": "2-4%",
+                  "timeline": "2-3 weeks",
+                  "effort": "Low",
+                  "budget": "$0",
+                  "actions": [
+                    "Optimize product titles with keywords",
+                    "Add high-quality images",
+                    "Competitive pricing research",
+                    "Add promotions in feed"
+                  ]
+                },
+                {
+                  "platform": "Skincare Blog & SEO",
+                  "why": "Long-term. Rank for 'best skincare for [skin type]'",
+                  "cac": null,
+                  "conversion": "1-2%",
+                  "timeline": "8-12 weeks (slow)",
+                  "effort": "Medium",
+                  "budget": "$0",
+                  "actions": [
+                    "Write 10 blog posts about skincare",
+                    "Optimize for Google SEO",
+                    "Link to products naturally",
+                    "Share on social media"
+                  ]
+                }
+              ],
+
+              "budget_allocation": {
+                "hero_channel": "50% ($500 from $1000) - Google Ads",
+                "support_channels": "30% ($300) - Instagram + TikTok Ads",
+                "goldmines": "20% ($200) - Blog + Feed optimization",
+                "rationale": "Google is predictable. Social ads support. Content compounds over time."
+              },
+
+              "timeline": "2-4 weeks to noticeable sales",
+              "expected_results": "1000-5000 visitors/month, 100-300 sales/month",
+              "note": "Balanced approach. Ads + organic. Requires budget discipline."
+            },
+
+            "growth": {
+              "label": "🚀 Aggressive Growth",
+              "description": "Well-funded ($2000+), multi-channel blitz, 1-2 weeks to traction",
+              "budget_tier": "$2000+",
+              "recommended_budget": "$5000+/month",
+
+              "hero_channel": {
+                "platform": "Multi-Channel Paid (Google + Meta + TikTok)",
+                "primary": "Google Ads (40%) + Meta Ads (40%) + TikTok Ads (20%)",
+                "why": "Dominate across all platforms. Multiple touchpoints. Higher conversion overall.",
+                "cac": "$15-35 blended",
+                "conversion": "3-6% (blend of cold + warm)",
+                "timeline": "1-2 weeks",
+                "effort": "Low - hire agency or manager",
+                "action_steps": [
+                  "Google Ads: Search + Shopping ($2000/month)",
+                  "Meta Ads: Facebook + Instagram ($1500/month)",
+                  "TikTok Ads: UGC content ($500/month)",
+                  "Hire PPC manager - ROI worth it",
+                  "Aim for 4x ROAS minimum"
+                ]
+              },
+
+              "support_channels": [
+                {
+                  "platform": "Influencer Partnerships (Macro)",
+                  "why": "Larger influencers (100K-1M). Fast reach. Budget allows for paid.",
+                  "cac": "$30-80",
+                  "conversion": "5-15%",
+                  "timeline": "1-3 weeks",
+                  "effort": "Low - hire influencer manager",
+                  "budget": "$2000+/month",
+                  "actions": [
+                    "Find 5-10 beauty/lifestyle influencers with 100K-500K followers",
+                    "Pay for sponsored posts ($500-2000 per)",
+                    "Negotiate affiliate commissions",
+                    "Track ROI per influencer"
+                  ]
+                },
+                {
+                  "platform": "Programmatic Display Ads (Retargeting)",
+                  "why": "Retarget site visitors. 70% cheaper CAC than cold.",
+                  "cac": "$10-20",
+                  "conversion": "3-5%",
+                  "timeline": "Immediate",
+                  "effort": "Low",
+                  "budget": "$1000/month",
+                  "actions": [
+                    "Install pixel on site",
+                    "Retarget to Google Display Network",
+                    "Retarget to Facebook/Instagram",
+                    "Frequency cap"
+                  ]
+                },
+                {
+                  "platform": "Affiliate Program (Scale)",
+                  "why": "Micro-influencers and bloggers promote. Pay only on sales.",
+                  "cac": "Variable (10-30% commission)",
+                  "conversion": "5-20%",
+                  "timeline": "2-4 weeks",
+                  "effort": "Low",
+                  "budget": "$0 upfront",
+                  "actions": [
+                    "Launch affiliate program",
+                    "Recruit 50-100 micro-affiliates",
+                    "Provide marketing assets",
+                    "Automate payouts"
+                  ]
+                }
+              ],
+
+              "hidden_goldmines": [
+                {
+                  "platform": "Podcast Sponsorships",
+                  "why": "Niche audiences. High intent. Lower CPM.",
+                  "cac": "$40-80",
+                  "conversion": "5-10%",
+                  "timeline": "2-3 weeks",
+                  "effort": "Low",
+                  "budget": "$1000-3000/month",
+                  "actions": [
+                    "Find 10-15 beauty/lifestyle podcasts",
+                    "Sponsor ad reads ($500-1000 each)",
+                    "Provide unique code for tracking",
+                    "Scale top performers"
+                  ]
+                },
+                {
+                  "platform": "Strategic Partnerships (B2B2C)",
+                  "why": "Partner with complementary brands. Cross-promotion.",
+                  "cac": "Variable",
+                  "conversion": "10-20%",
+                  "timeline": "4-8 weeks",
+                  "effort": "Medium",
+                  "budget": "$0-1000",
+                  "actions": [
+                    "Partner with health/wellness brands",
+                    "Co-marketed campaigns",
+                    "Bundle deals",
+                    "Email list swaps"
+                  ]
+                }
+              ],
+
+              "budget_allocation": {
+                "hero_channel": "50% ($2500 from $5000) - Multi-channel paid",
+                "support_channels": "30% ($1500) - Influencers + Retargeting + Affiliate",
+                "goldmines": "20% ($1000) - Partnerships + Podcasts",
+                "rationale": "Paid dominance. Multiple channels. Aggregate data to find best performers."
+              },
+
+              "timeline": "1-2 weeks to meaningful traction",
+              "expected_results": "5000-20000 visitors/month, 500-2000 sales/month",
+              "note": "Expensive. Requires daily optimization. ROI-focused."
+            }
+          }
+        }
+      },
+
+      "market_variants": {
+        "us": {
+          "currency": "USD",
+          "cac_multiplier": 1.0,
+          "labor_cost_multiplier": 1.0,
+          "platform_focus": ["Google Ads", "Meta", "TikTok", "LinkedIn"],
+          "note": "Most expensive. Highest consumer spending. Saturated."
+        },
+        "india": {
+          "currency": "INR",
+          "cac_multiplier": 0.15,
+          "labor_cost_multiplier": 0.10,
+          "platform_focus": ["Google Ads", "Facebook", "Instagram", "YouTube"],
+          "note": "Much cheaper CPM. Growing e-commerce. WhatsApp effective."
+        },
+        "europe": {
+          "currency": "EUR",
+          "cac_multiplier": 1.2,
+          "labor_cost_multiplier": 1.5,
+          "platform_focus": ["Google Ads", "LinkedIn", "Local communities"],
+          "note": "Very expensive. Privacy regulations. Strong local."
+        }
+      }
+    },
+    {
+      "id": "shoe_shop",
+      "name": "Shoe Shop",
+      "category": "Retail & Consumer Goods",
+      "subcategory": "Footwear",
+      "keywords": ["shoes", "footwear", "shoe store", "sneakers", "boots"],
+      "description": "Physical or online shoe retail business",
+
+      "variants": {
+        "online": {
+          "mindsets": {
+            "bootstrapper": {
+              "label": "🆓 No Budget Strategy",
+              "description": "DIY approach, $0/month, 8-12 weeks to results",
+              "budget_tier": "$0",
+              "recommended_budget": "$0-200",
+
+              "hero_channel": {
+                "platform": "Organic Social Media + Niche Communities",
+                "primary": "TikTok Organic (Shoe Hauls & Styling)",
+                "why": "Shoe content is highly viral on TikTok. Zero cost. Takes consistency but free.",
+                "cac": null,
+                "conversion": "0.5-2%",
+                "timeline": "8-12 weeks to first sales",
+                "effort": "Very High - daily content",
+                "action_steps": [
+                  "Post 3-5 TikTok videos/week (shoe styling, unboxing, reviews)",
+                  "Link to shop in bio",
+                  "Partner with micro-creators (free product)",
+                  "Build TikTok audience to 10K+",
+                  "Convert followers to email"
+                ]
+              },
+
+              "support_channels": [
+                {
+                  "platform": "Reddit r/Sneakers + r/Shoes",
+                  "why": "2.5M+ engaged sneaker enthusiasts asking for recommendations",
+                  "cac": null,
+                  "conversion": "1-3%",
+                  "timeline": "2-4 weeks",
+                  "effort": "Medium",
+                  "actions": [
+                    "Join communities, answer authentically",
+                    "Never hard sell",
+                    "Host review threads monthly",
+                    "Share genuine tips"
+                  ]
+                },
+                {
+                  "platform": "Pinterest Organic",
+                  "why": "High search volume for shoe styles. Zero cost.",
+                  "cac": null,
+                  "conversion": "2-4%",
+                  "timeline": "4-8 weeks",
+                  "effort": "Low-Medium",
+                  "actions": [
+                    "Create 50+ pins with styling",
+                    "Link to products",
+                    "Use trending keywords",
+                    "Save high traffic content"
+                  ]
+                }
+              ],
+
+              "hidden_goldmines": [
+                {
+                  "platform": "Fashion Bloggers (100K-500K)",
+                  "why": "Mid-tier influencers don't charge much. High trust.",
+                  "cac": null,
+                  "conversion": "5-15%",
+                  "timeline": "2-4 weeks",
+                  "effort": "Medium",
+                  "actions": [
+                    "Find 10-20 fashion bloggers",
+                    "Send free shoes with note",
+                    "Ask for honest review",
+                    "Build relationships"
+                  ]
+                },
+                {
+                  "platform": "Fashion Newsletter Collabs",
+                  "why": "Partner with fashion newsletters. Their audience = customers.",
+                  "cac": null,
+                  "conversion": "3-8%",
+                  "timeline": "1-2 weeks",
+                  "effort": "Low",
+                  "actions": [
+                    "Find fashion newsletters",
+                    "Pitch collaboration",
+                    "Offer reader discount",
+                    "Guest write about trends"
+                  ]
+                }
+              ],
+
+              "timeline": "8-12 weeks",
+              "expected_results": "100-500 visitors/month, 10-50 sales/month",
+              "note": "Takes time but works. No budget needed."
+            },
+
+            "founder": {
+              "label": "💡 Growth Strategy",
+              "description": "Some budget ($500-2000), balanced, 2-4 weeks",
+              "budget_tier": "$500-2000",
+              "recommended_budget": "$1000",
+
+              "hero_channel": {
+                "platform": "Google Ads (Search) + Organic",
+                "primary": "Google Ads for product keywords",
+                "why": "People searching 'buy shoes online' have PURCHASE intent.",
+                "cac": "$25-50",
+                "conversion": "2-5%",
+                "timeline": "1-2 weeks",
+                "effort": "Medium",
+                "action_steps": [
+                  "Setup Google Shopping ads",
+                  "Target: 'buy [shoe type]', '[brand] shoes'",
+                  "Budget: $500/month",
+                  "Test different styles",
+                  "Track ROAS - aim 3x"
+                ]
+              },
+
+              "support_channels": [
+                {
+                  "platform": "Instagram Ads + Organic",
+                  "why": "Visual platform. Visual buyers.",
+                  "cac": "$30-60",
+                  "conversion": "1-3%",
+                  "timeline": "2-4 weeks",
+                  "effort": "Medium",
+                  "budget": "$300/month",
+                  "actions": [
+                    "Carousel ads (collections)",
+                    "Retarget visitors",
+                    "3-4 organic reels/week",
+                    "User-generated content"
+                  ]
+                },
+                {
+                  "platform": "TikTok Ads",
+                  "why": "Cheapest CPM for 18-35.",
+                  "cac": "$15-40",
+                  "conversion": "1-2%",
+                  "timeline": "2-3 weeks",
+                  "effort": "Low-Medium",
+                  "budget": "$200/month",
+                  "actions": [
+                    "Use UGC ads",
+                    "Target fashion/streetwear",
+                    "A/B test 5 videos",
+                    "Optimize for clicks"
+                  ]
+                }
+              ],
+
+              "hidden_goldmines": [
+                {
+                  "platform": "Google Shopping Feed",
+                  "why": "Free traffic if optimized.",
+                  "cac": null,
+                  "conversion": "2-4%",
+                  "timeline": "2-3 weeks",
+                  "effort": "Low",
+                  "budget": "$0",
+                  "actions": [
+                    "Optimize titles",
+                    "High-quality images",
+                    "Pricing research",
+                    "Add promotions"
+                  ]
+                },
+                {
+                  "platform": "Blog & SEO",
+                  "why": "Long-term. Rank for shoe guides.",
+                  "cac": null,
+                  "conversion": "1-2%",
+                  "timeline": "8-12 weeks",
+                  "effort": "Medium",
+                  "budget": "$0",
+                  "actions": [
+                    "Write 10 blog posts",
+                    "Optimize for Google",
+                    "Link to products",
+                    "Share on social"
+                  ]
+                }
+              ],
+
+              "budget_allocation": {
+                "hero_channel": "50% ($500) - Google Ads",
+                "support_channels": "30% ($300) - Instagram + TikTok",
+                "goldmines": "20% ($200) - Blog + Feed",
+                "rationale": "Google predictable. Social complements. Content compounds."
+              },
+
+              "timeline": "2-4 weeks",
+              "expected_results": "1000-5000 visitors/month, 100-300 sales/month",
+              "note": "Balanced. Ads + organic."
+            },
+
+            "growth": {
+              "label": "🚀 Aggressive Growth",
+              "description": "Well-funded ($2000+), multi-channel, 1-2 weeks",
+              "budget_tier": "$2000+",
+              "recommended_budget": "$5000+/month",
+
+              "hero_channel": {
+                "platform": "Multi-Channel Paid",
+                "primary": "Google (40%) + Meta (40%) + TikTok (20%)",
+                "why": "Dominate all platforms. Multiple touchpoints.",
+                "cac": "$15-35",
+                "conversion": "3-6%",
+                "timeline": "1-2 weeks",
+                "effort": "Low",
+                "action_steps": [
+                  "Google: Search + Shopping ($2000/month)",
+                  "Meta: Facebook + Instagram ($1500/month)",
+                  "TikTok: UGC ($500/month)",
+                  "Hire PPC manager",
+                  "Aim 4x ROAS"
+                ]
+              },
+
+              "support_channels": [
+                {
+                  "platform": "Influencers (Macro)",
+                  "why": "100K-1M reach. Budget allows.",
+                  "cac": "$30-80",
+                  "conversion": "5-15%",
+                  "timeline": "1-3 weeks",
+                  "effort": "Low",
+                  "budget": "$2000+/month",
+                  "actions": [
+                    "Find 5-10 influencers",
+                    "Pay per post ($500-2000)",
+                    "Affiliate commissions",
+                    "Track ROI"
+                  ]
+                },
+                {
+                  "platform": "Retargeting Ads",
+                  "why": "70% cheaper than cold.",
+                  "cac": "$10-20",
+                  "conversion": "3-5%",
+                  "timeline": "Immediate",
+                  "effort": "Low",
+                  "budget": "$1000/month",
+                  "actions": [
+                    "Install pixel",
+                    "Retarget GDN",
+                    "Retarget Meta",
+                    "Frequency cap"
+                  ]
+                },
+                {
+                  "platform": "Affiliate Program",
+                  "why": "Pay only on sales.",
+                  "cac": "10-30% commission",
+                  "conversion": "5-20%",
+                  "timeline": "2-4 weeks",
+                  "effort": "Low",
+                  "budget": "$0 upfront",
+                  "actions": [
+                    "Launch program",
+                    "Recruit 50-100",
+                    "Provide assets",
+                    "Automate payouts"
+                  ]
+                }
+              ],
+
+              "hidden_goldmines": [
+                {
+                  "platform": "Podcast Sponsorships",
+                  "why": "Niche. High intent.",
+                  "cac": "$40-80",
+                  "conversion": "5-10%",
+                  "timeline": "2-3 weeks",
+                  "effort": "Low",
+                  "budget": "$1000-3000/month",
+                  "actions": [
+                    "Find 10-15 podcasts",
+                    "Sponsor reads",
+                    "Unique tracking codes",
+                    "Scale winners"
+                  ]
+                },
+                {
+                  "platform": "B2B2C Partnerships",
+                  "why": "Cross-promotion.",
+                  "cac": "Variable",
+                  "conversion": "10-20%",
+                  "timeline": "4-8 weeks",
+                  "effort": "Medium",
+                  "budget": "$0-1000",
+                  "actions": [
+                    "Partner with brands",
+                    "Co-marketing",
+                    "Bundles",
+                    "Email swaps"
+                  ]
+                }
+              ],
+
+              "budget_allocation": {
+                "hero_channel": "50% ($2500) - Multi-channel",
+                "support_channels": "30% ($1500) - Influencers + Retargeting",
+                "goldmines": "20% ($1000) - Partnerships",
+                "rationale": "Paid dominance. Multiple channels. Find winners, scale."
+              },
+
+              "timeline": "1-2 weeks",
+              "expected_results": "5000-20000 visitors/month, 500-2000 sales/month",
+              "note": "Expensive. Daily optimization. ROI-focused."
+            }
+          }
+        }
+      },
+
+      "market_variants": {
+        "us": {
+          "currency": "USD",
+          "cac_multiplier": 1.0,
+          "labor_cost_multiplier": 1.0,
+          "platform_focus": ["Google Ads", "Meta", "TikTok"],
+          "note": "Most expensive market."
+        },
+        "india": {
+          "currency": "INR",
+          "cac_multiplier": 0.15,
+          "labor_cost_multiplier": 0.10,
+          "platform_focus": ["Google", "Facebook", "Instagram"],
+          "note": "Much cheaper CPM."
+        },
+        "europe": {
+          "currency": "EUR",
+          "cac_multiplier": 1.2,
+          "labor_cost_multiplier": 1.5,
+          "platform_focus": ["Google", "LinkedIn"],
+          "note": "Very expensive."
+        }
+      }
+    }
+  ]
+}
