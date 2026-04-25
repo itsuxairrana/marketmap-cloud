@@ -5,13 +5,10 @@ export const dynamic = 'force-dynamic';
 import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import rawBusinessData from '@/data/business_marketing_data.json';
 import { BusinessType, BusinessVariant } from '@/types/business';
 import { trackResultsView } from '@/lib/analytics';
 import { generatePDF, downloadPDF } from '@/utils/pdf-generator';
-
-// Extract business types from the raw data structure
-const businessData = (rawBusinessData as any).business_types || [];
+import { getBusinessData } from '@/lib/dataLoader';
 
 function ResultPageContent() {
   const searchParams = useSearchParams();
@@ -30,8 +27,8 @@ function ResultPageContent() {
         throw new Error('Missing business ID');
       }
 
-      // Find business by microcategory ID
-      const foundBusiness = businessData.find((b: any) => b.microcategory === businessId);
+      // Find business by ID using dataLoader
+      const foundBusiness = getBusinessData(businessId);
 
       if (!foundBusiness) {
         throw new Error('Business type not found');
@@ -39,14 +36,14 @@ function ResultPageContent() {
 
       // Get the specific variant (default to 'online' if not specified)
       const selectedVariant = variantParam || 'online';
-      const planData = foundBusiness.variants[selectedVariant];
+      const planData = foundBusiness.variants?.[selectedVariant];
 
       if (!planData) {
         throw new Error(`${selectedVariant} variant not available for this business type`);
       }
 
-      setBusiness(foundBusiness);
-      setMarketingPlan(planData);
+      setBusiness(foundBusiness as BusinessType);
+      setMarketingPlan(planData as BusinessVariant);
 
       const budgetNum = Number(budgetParam) || 10000;
 

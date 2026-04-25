@@ -1,275 +1,305 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Suspense } from 'react';
-import businessTaxonomy from '@/data/business_taxonomy.json';
-import rawBusinessData from '@/data/business_marketing_data.json';
-import { FormState } from '@/types/business';
-import { validateBudget } from '@/utils/validators';
+import {
+  getCategoriesWithData,
+  getSubcategoriesWithData,
+  getBusinessTypesWithData,
+  getAvailableVariants,
+  searchBusinessType,
+  getClosestMatches,
+  hasDataForBusiness,
+  getAllBusinessData,
+} from '@/lib/dataLoader';
 import { trackFormSubmit } from '@/lib/analytics';
-
-// Extract business types from the raw data structure
-const businessData = (rawBusinessData as any).business_types || [];
 
 export default function Form() {
   const router = useRouter();
-  const [formState, setFormState] = useState<FormState>({
-    selectedCategory: null,
-    selectedSubcategory: null,
-    selectedBusinessType: null,
-    selectedVariant: 'online',
-    selectedBudget: 10000,
-  });
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedSubcategory, setSelectedSubcategory] = useState('');
+  const [selectedBusinessType, setSelectedBusinessType] = useState('');
+  const [selectedVariant, setSelectedVariant] = useState('online');
+  const [budget, setBudget] = useState('10000');
+  const [searchMode, setSearchMode] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [showFallback, setShowFallback] = useState(false);
+  const [fallbackSuggestions, setFallbackSuggestions] = useState<any[]>([]);
 
-  const [errors, setErrors] = useState<Partial<FormState>>({});
+  // Get available categories (only those with data)
+  const categories = getCategoriesWithData();
 
-  // Get available subcategories based on selected category
-  const subcategories = useMemo(() => {
-    if (!formState.selectedCategory) return [];
-    const category = businessTaxonomy.categories.find(
-      (c) => c.id === formState.selectedCategory
-    );
-    return category?.subcategories || [];
-  }, [formState.selectedCategory]);
+  // Get subcategories when category selected
+  const subcategories = selectedCategory
+    ? getSubcategoriesWithData(selectedCategory)
+    : [];
 
-  // Get available micro-categories/business types
-  const businessTypes = useMemo(() => {
-    if (!formState.selectedSubcategory) return [];
-    const subcategory = businessTaxonomy.categories
-      .flatMap((c) => c.subcategories)
-      .find((s) => s.id === formState.selectedSubcategory);
+  // Get business types when category/subcategory selected
+  const businessTypes = selectedCategory
+    ? getBusinessTypesWithData(selectedCategory, selectedSubcategory)
+    : [];
 
-    if (!subcategory) return [];
+  // Get available variants for selected business
+  const availableVariants = selectedBusinessType
+    ? getAvailableVariants(selectedBusinessType)
+    : [];
 
-    // Map micro-categories to business data
-    return subcategory.microcategories.map((micro) => {
-      const businessItem = businessData.find(
-        (b: any) => b.microcategory === micro.id
-      );
-      return {
-        id: micro.id,
-        name: micro.name,
-        hasOnline: micro.variants.some((v) => v.type === 'online'),
-        hasPhysical: micro.variants.some((v) => v.type === 'physical'),
-        hasB2b: micro.variants.some((v) => v.type === 'b2b'),
-        businessData,
-      };
-    });
-  }, [formState.selectedSubcategory]);
-
-  // Get available variants for selected business type
-  const availableVariants = useMemo(() => {
-    if (!formState.selectedBusinessType) return [];
-    const businessType = businessTypes.find(
-      (b) => b.id === formState.selectedBusinessType
-    );
-
-    if (!businessType) return [];
-
-    const variants: Array<'online' | 'physical' | 'b2b'> = [];
-    if (businessType.hasOnline) variants.push('online');
-    if (businessType.hasPhysical) variants.push('physical');
-    if (businessType.hasB2b) variants.push('b2b');
-
-    return variants;
-  }, [formState.selectedBusinessType, businessTypes]);
-
+  // Handle category change
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const categoryId = e.target.value;
-    setFormState({
-      ...formState,
-      selectedCategory: categoryId || null,
-      selectedSubcategory: null,
-      selectedBusinessType: null,
-      selectedVariant: 'online',
-    });
-    setErrors({});
+    setSelectedCategory(e.target.value);
+    setSelectedSubcategory('');
+    setSelectedBusinessType('');
+    setShowFallback(false);
+    setSearchMode(false);
   };
 
+  // Handle subcategory change
   const handleSubcategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const subcategoryId = e.target.value;
-    setFormState({
-      ...formState,
-      selectedSubcategory: subcategoryId || null,
-      selectedBusinessType: null,
-      selectedVariant: 'online',
-    });
-    setErrors({});
+    setSelectedSubcategory(e.target.value);
+    setSelectedBusinessType('');
+    setShowFallback(false);
+    setSearchMode(false);
   };
 
+  // Handle business type change
   const handleBusinessTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const businessTypeId = e.target.value;
-    const selectedType = businessTypes.find((b) => b.id === businessTypeId);
+    const businessId = e.target.value;
+    setSelectedBusinessType(businessId);
 
     // Auto-select first available variant
-    let defaultVariant: 'online' | 'physical' | 'b2b' = 'online';
-    if (selectedType && !selectedType.hasOnline && selectedType.hasPhysical) {
-      defaultVariant = 'physical';
-    } else if (selectedType && !selectedType.hasOnline && !selectedType.hasPhysical && selectedType.hasB2b) {
-      defaultVariant = 'b2b';
+    const variants = getAvailableVariants(businessId);
+    if (variants.length > 0) {
+      setSelectedVariant(variants[0]);
+    }
+    setShowFallback(false);
+    setSearchMode(false);
+  };
+
+  // FALLBACK OPTION A: Search functionality
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (query.length < 2) {
+      setSearchResults([]);
+      return;
     }
 
-    setFormState({
-      ...formState,
-      selectedBusinessType: businessTypeId || null,
-      selectedVariant: defaultVariant,
-    });
-    setErrors({});
+    const results = searchBusinessType(query);
+    setSearchResults(results);
   };
 
-  const handleVariantChange = (variant: 'online' | 'physical' | 'b2b') => {
-    setFormState({
-      ...formState,
-      selectedVariant: variant,
-    });
+  // Handle search result selection
+  const handleSearchResultClick = (businessId: string) => {
+    setSelectedBusinessType(businessId);
+    setSearchQuery('');
+    setSearchResults([]);
+    setSearchMode(false);
+
+    // Auto-select variant
+    const variants = getAvailableVariants(businessId);
+    if (variants.length > 0) {
+      setSelectedVariant(variants[0]);
+    }
   };
 
-  const handleBudgetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const budget = Number(e.target.value);
-    setFormState({
-      ...formState,
-      selectedBudget: budget,
-    });
+  // Handle "Can't find?" button - FALLBACK OPTIONS B + C
+  const handleCantFind = () => {
+    setShowFallback(true);
+
+    // Get suggestions based on current selection
+    const suggestions = getClosestMatches(selectedCategory, selectedSubcategory);
+    setFallbackSuggestions(suggestions);
   };
 
+  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newErrors: Partial<FormState> = {};
-
-    if (!formState.selectedCategory) {
-      newErrors.selectedCategory = 'category' as any;
-    }
-    if (!formState.selectedSubcategory) {
-      newErrors.selectedSubcategory = 'subcategory' as any;
-    }
-    if (!formState.selectedBusinessType) {
-      newErrors.selectedBusinessType = 'businessType' as any;
-    }
-    if (!validateBudget(formState.selectedBudget)) {
-      newErrors.selectedBudget = 'budget' as any;
+    if (!selectedBusinessType) {
+      alert('Please select a business type');
+      return;
     }
 
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
+    if (!hasDataForBusiness(selectedBusinessType)) {
+      alert('This business type does not have data yet');
       return;
     }
 
     // Track form submission
-    trackFormSubmit(formState.selectedBusinessType as string, formState.selectedBudget);
+    trackFormSubmit(selectedBusinessType, Number(budget));
 
-    // Navigate to results page with business type and variant
-    const url = `/result?businessId=${formState.selectedBusinessType}&variant=${formState.selectedVariant}&budget=${formState.selectedBudget}`;
-    router.push(url);
+    router.push(
+      `/result?businessId=${selectedBusinessType}&variant=${selectedVariant}&budget=${budget}`
+    );
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Category Dropdown */}
+      {/* CATEGORIES WITH DATA ONLY */}
       <div>
-        <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
-          Business Category *
+        <label className="block text-sm font-semibold text-slate-700 mb-2">
+          1. Your Business Category
         </label>
         <select
-          id="category"
-          value={formState.selectedCategory || ''}
+          value={selectedCategory}
           onChange={handleCategoryChange}
-          className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent ${
-            errors.selectedCategory ? 'border-red-500' : 'border-gray-300'
-          }`}
+          className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none"
         >
-          <option value="">Select a category...</option>
-          {businessTaxonomy.categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
+          <option value="">Select category...</option>
+          {categories.map(cat => (
+            <option key={cat} value={cat}>
+              {cat}
             </option>
           ))}
         </select>
-        {errors.selectedCategory && (
-          <p className="text-red-600 text-sm mt-1">Category is required</p>
-        )}
+        <p className="text-xs text-slate-500 mt-1">
+          Only showing {categories.length} categories with verified data
+        </p>
       </div>
 
-      {/* Subcategory Dropdown */}
-      <div>
-        <label htmlFor="subcategory" className="block text-sm font-medium text-gray-700 mb-2">
-          Subcategory *
-        </label>
-        <select
-          id="subcategory"
-          value={formState.selectedSubcategory || ''}
-          onChange={handleSubcategoryChange}
-          disabled={!formState.selectedCategory}
-          className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed ${
-            errors.selectedSubcategory ? 'border-red-500' : 'border-gray-300'
-          }`}
-        >
-          <option value="">
-            {!formState.selectedCategory
-              ? 'Select a category first'
-              : 'Select a subcategory...'}
-          </option>
-          {subcategories.map((subcategory) => (
-            <option key={subcategory.id} value={subcategory.id}>
-              {subcategory.name}
-            </option>
-          ))}
-        </select>
-        {errors.selectedSubcategory && (
-          <p className="text-red-600 text-sm mt-1">Subcategory is required</p>
-        )}
-      </div>
-
-      {/* Business Type Dropdown */}
-      <div>
-        <label htmlFor="businessType" className="block text-sm font-medium text-gray-700 mb-2">
-          Business Type *
-        </label>
-        <select
-          id="businessType"
-          value={formState.selectedBusinessType || ''}
-          onChange={handleBusinessTypeChange}
-          disabled={!formState.selectedSubcategory}
-          className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed ${
-            errors.selectedBusinessType ? 'border-red-500' : 'border-gray-300'
-          }`}
-        >
-          <option value="">
-            {!formState.selectedSubcategory
-              ? 'Select a subcategory first'
-              : 'Select a business type...'}
-          </option>
-          {businessTypes.map((type) => (
-            <option key={type.id} value={type.id}>
-              {type.name}
-            </option>
-          ))}
-        </select>
-        {errors.selectedBusinessType && (
-          <p className="text-red-600 text-sm mt-1">Business type is required</p>
-        )}
-      </div>
-
-      {/* Variant Selection (Radio Buttons) */}
-      {formState.selectedBusinessType && availableVariants.length > 0 && (
+      {/* SUBCATEGORIES (if applicable) */}
+      {selectedCategory && subcategories.length > 0 && (
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            Business Model *
+          <label className="block text-sm font-semibold text-slate-700 mb-2">
+            2. Business Type
+          </label>
+          <select
+            value={selectedSubcategory}
+            onChange={handleSubcategoryChange}
+            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none"
+          >
+            <option value="">Select type...</option>
+            {subcategories.map(sub => (
+              <option key={sub} value={sub}>
+                {sub}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      {/* BUSINESS TYPES */}
+      {selectedCategory && businessTypes.length > 0 && (
+        <div>
+          <label className="block text-sm font-semibold text-slate-700 mb-2">
+            3. Your Specific Business
+          </label>
+          <select
+            value={selectedBusinessType}
+            onChange={handleBusinessTypeChange}
+            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none"
+          >
+            <option value="">Select business...</option>
+            {businessTypes.map(bt => (
+              <option key={bt.microcategory || bt.id} value={bt.microcategory || bt.id}>
+                {bt.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      {/* FALLBACK OPTION A: SEARCH FOR BUSINESS */}
+      {selectedCategory && businessTypes.length === 0 && !showFallback && (
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <button
+            type="button"
+            onClick={() => setSearchMode(!searchMode)}
+            className="text-blue-600 hover:text-blue-800 font-semibold text-sm"
+          >
+            {searchMode ? '✕ Close search' : '🔍 Search for your business'}
+          </button>
+
+          {searchMode && (
+            <div className="mt-3">
+              <input
+                type="text"
+                placeholder="Type your business (e.g., 'shoe shop', 'salon')"
+                value={searchQuery}
+                onChange={(e) => handleSearch(e.target.value)}
+                className="w-full px-3 py-2 border border-blue-300 rounded-lg text-sm"
+                autoFocus
+              />
+
+              {searchResults.length > 0 && (
+                <div className="mt-2 space-y-1">
+                  {searchResults.map(result => (
+                    <button
+                      key={result.microcategory || result.id}
+                      type="button"
+                      onClick={() => handleSearchResultClick(result.microcategory || result.id)}
+                      className="block w-full text-left px-3 py-2 text-sm bg-blue-100 hover:bg-blue-200 rounded text-blue-900"
+                    >
+                      {result.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* FALLBACK OPTIONS B + C: CAN'T FIND */}
+      {selectedCategory && businessTypes.length === 0 && !searchMode && !showFallback && (
+        <button
+          type="button"
+          onClick={handleCantFind}
+          className="w-full px-4 py-2 text-sm bg-yellow-100 text-yellow-800 border border-yellow-300 rounded-lg hover:bg-yellow-200 font-semibold"
+        >
+          Can't find your business?
+        </button>
+      )}
+
+      {/* FALLBACK SUGGESTIONS */}
+      {showFallback && fallbackSuggestions.length > 0 && (
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+          <p className="text-sm font-semibold text-yellow-900 mb-3">
+            We don't have your exact business yet, but try these closest matches:
+          </p>
+          <div className="space-y-2">
+            {fallbackSuggestions.map(suggestion => (
+              <button
+                key={suggestion.microcategory || suggestion.id}
+                type="button"
+                onClick={() => handleSearchResultClick(suggestion.microcategory || suggestion.id)}
+                className="block w-full text-left px-3 py-2 text-sm bg-yellow-100 hover:bg-yellow-200 rounded text-yellow-900"
+              >
+                {suggestion.name}
+              </button>
+            ))}
+          </div>
+
+          <a
+            href="mailto:request@marketmap.cloud?subject=Add%20my%20business%20type"
+            className="text-xs text-yellow-700 hover:text-yellow-900 mt-3 block font-semibold"
+          >
+            📧 Or email us to request your business type
+          </a>
+        </div>
+      )}
+
+      {/* VARIANTS (show only if available) */}
+      {selectedBusinessType && availableVariants.length > 1 && (
+        <div>
+          <label className="block text-sm font-semibold text-slate-700 mb-2">
+            Business Model
           </label>
           <div className="space-y-2">
-            {availableVariants.map((variant) => (
-              <label key={variant} className="flex items-center cursor-pointer">
+            {availableVariants.map(variant => (
+              <label key={variant} className="flex items-center">
                 <input
                   type="radio"
                   name="variant"
                   value={variant}
-                  checked={formState.selectedVariant === variant}
-                  onChange={() => handleVariantChange(variant)}
-                  className="w-4 h-4 text-primary border-gray-300 focus:ring-2 focus:ring-primary"
+                  checked={selectedVariant === variant}
+                  onChange={(e) => setSelectedVariant(e.target.value)}
+                  className="mr-3"
                 />
-                <span className="ml-3 text-gray-700 capitalize">
-                  {variant === 'b2b' ? 'B2B / Wholesale' : `${variant} First`}
+                <span className="text-sm text-slate-700 capitalize">
+                  {variant === 'online' ? '🌐 Online/DTC' :
+                   variant === 'physical' ? '🏪 Physical Store' :
+                   '🤝 B2B'}
                 </span>
               </label>
             ))}
@@ -277,52 +307,37 @@ export default function Form() {
         </div>
       )}
 
-      {/* Budget Input */}
+      {/* BUDGET */}
       <div>
-        <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-2">
-          Monthly Marketing Budget *
+        <label className="block text-sm font-semibold text-slate-700 mb-2">
+          Monthly Marketing Budget
         </label>
-        <div className="relative">
-          <span className="absolute left-4 top-3 text-gray-500">$</span>
+        <div className="flex items-center">
+          <span className="text-lg font-bold text-slate-700 mr-2">$</span>
           <input
-            id="budget"
             type="number"
-            min="0"
-            max="1000000"
+            value={budget}
+            onChange={(e) => setBudget(e.target.value)}
+            min="100"
             step="1000"
-            value={formState.selectedBudget}
-            onChange={handleBudgetChange}
-            placeholder="10,000"
-            className={`w-full pl-8 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent ${
-              errors.selectedBudget ? 'border-red-500' : 'border-gray-300'
-            }`}
+            className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none"
           />
+          <span className="text-sm text-slate-600 ml-2">/month</span>
         </div>
-        <p className="text-gray-500 text-xs mt-1">
-          Budget range: $1,000 - $1,000,000
-        </p>
-        {errors.selectedBudget && (
-          <p className="text-red-600 text-sm mt-1">Budget must be between $1,000 and $1,000,000</p>
-        )}
       </div>
 
-      {/* Submit Button */}
+      {/* SUBMIT */}
       <button
         type="submit"
-        disabled={!formState.selectedCategory || !formState.selectedSubcategory || !formState.selectedBusinessType}
-        className={`w-full py-3 px-4 rounded-lg font-medium text-white transition-all duration-200 ${
-          !formState.selectedCategory || !formState.selectedSubcategory || !formState.selectedBusinessType
-            ? 'bg-gray-400 cursor-not-allowed'
-            : 'bg-primary hover:bg-blue-700 active:scale-95'
+        disabled={!selectedBusinessType}
+        className={`w-full py-3 rounded-lg font-bold text-white transition ${
+          selectedBusinessType
+            ? 'bg-blue-600 hover:bg-blue-700 cursor-pointer'
+            : 'bg-slate-300 cursor-not-allowed'
         }`}
       >
-        Get Your Platform Map
+        Get My Marketing Plan →
       </button>
-
-      {/* Info Text */}
-      <p className="text-xs text-gray-500 text-center">
-        ✓ 100% free • No credit card required • Results in 10 seconds
-      </p>
     </form>
   );
 }
