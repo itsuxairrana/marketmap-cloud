@@ -23,7 +23,8 @@ export default function ResultsContent() {
   const budget = parseInt(budgetParam);
 
   const business = businessId ? getBusinessData(businessId) : null;
-  const marketingData = business?.variants?.[variant as keyof typeof business.variants];
+  const variantKey = `${variant}_variant` as keyof typeof business;
+  const marketingData = business ? (business[variantKey] as any) : null;
 
   if (!business || !marketingData) {
     return (

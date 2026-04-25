@@ -7,11 +7,9 @@ export interface BusinessTypeData {
   category: string;
   subcategory?: string;
   microcategory?: string;
-  variants?: {
-    online?: any;
-    physical?: any;
-    b2b?: any;
-  };
+  online_variant?: any;
+  physical_variant?: any;
+  b2b_variant?: any;
 }
 
 // Load all available business data
@@ -137,10 +135,14 @@ export const hasDataForBusiness = (businessId: string): boolean => {
 // Get list of available variants for a business
 export const getAvailableVariants = (businessId: string): string[] => {
   const business = getBusinessData(businessId);
-  if (!business?.variants) return [];
-  return Object.keys(business.variants).filter(
-    (k) => business.variants![k as keyof typeof business.variants]
-  );
+  if (!business) return [];
+
+  const variants: string[] = [];
+  if (business.online_variant) variants.push('online');
+  if (business.physical_variant) variants.push('physical');
+  if (business.b2b_variant) variants.push('b2b');
+
+  return variants;
 };
 
 // Get popular business types (manually curated top searches)
