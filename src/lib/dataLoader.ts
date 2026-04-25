@@ -142,3 +142,67 @@ export const getAvailableVariants = (businessId: string): string[] => {
     (k) => business.variants![k as keyof typeof business.variants]
   );
 };
+
+// Get popular business types (manually curated top searches)
+export const getPopularSearches = (): string[] => {
+  return [
+    'Shoe Shop',
+    'Restaurant',
+    'B2B SaaS Product',
+    'DTC Skincare Brand',
+    'Gym',
+    'Salon',
+    'Clothing Store',
+    'Coffee Shop',
+    'Marketing Agency',
+    'Web Developer',
+    'Real Estate Agent',
+    'Personal Trainer',
+    'Freelancer',
+  ];
+};
+
+// Enhanced search with better matching
+export const searchBusinessTypeAdvanced = (userInput: string): BusinessTypeData[] => {
+  if (!userInput.trim()) return [];
+
+  const allData = getAllBusinessData();
+  const query = userInput.toLowerCase().trim();
+
+  return allData
+    .map(b => ({
+      business: b,
+      score: calculateMatchScoreAdvanced(query, b),
+    }))
+    .filter(m => m.score > 0.2)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 8)
+    .map(m => m.business);
+};
+
+// Better scoring algorithm
+const calculateMatchScoreAdvanced = (query: string, business: BusinessTypeData): number => {
+  const name = business.name.toLowerCase();
+  const category = business.category.toLowerCase();
+  const subcategory = (business.subcategory || '').toLowerCase();
+
+  let score = 0;
+
+  if (name === query) score += 10;
+  if (name.startsWith(query)) score += 8;
+  if (category.startsWith(query)) score += 6;
+
+  if (name.includes(query)) score += 5;
+  if (category.includes(query)) score += 3;
+  if (subcategory.includes(query)) score += 2;
+
+  const nameWords = name.split(/\s+/);
+  const queryWords = query.split(/\s+/);
+
+  queryWords.forEach(qw => {
+    if (nameWords.some(w => w.startsWith(qw))) score += 2;
+    if (nameWords.some(w => w === qw)) score += 3;
+  });
+
+  return score;
+};
