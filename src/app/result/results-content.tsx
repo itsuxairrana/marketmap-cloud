@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { getBusinessData } from '@/lib/dataLoader';
-import { generatePDF } from '@/utils/pdf-generator';
+import { generatePDF, downloadPDF } from '@/utils/pdf-generator';
 
 export default function ResultsContent() {
   const searchParams = useSearchParams();
@@ -62,7 +62,13 @@ export default function ResultsContent() {
   ];
 
   const handleDownloadPDF = () => {
-    generatePDF(business as any, marketingData as any, budget, variant as any);
+    try {
+      const doc = generatePDF(business as any, marketingData as any, budget, variant as any);
+      downloadPDF(doc, business.name);
+    } catch (error) {
+      console.error('Failed to download PDF:', error);
+      alert('Failed to download PDF. Please try again.');
+    }
   };
 
   return (
